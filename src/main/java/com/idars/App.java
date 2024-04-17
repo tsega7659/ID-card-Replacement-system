@@ -15,13 +15,17 @@ public class App {
     public static Connection db;
 
 
-    private App() throws SQLException {
+    private App() {
         this.router = new Router();
         this.server = Undertow.builder()
                 .addHttpListener(8081, "localhost")
                 .setHandler(router)
                 .build();
-        this.db  = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/movies_db", "root", "admin");
+        try {
+            App.db  = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/movies_db", "root", "admin");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private void start() {
