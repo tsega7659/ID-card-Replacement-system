@@ -1,11 +1,7 @@
-package com.idars;
+package com.IDentifyMe;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-
-import com.idars.classes.Router;
-
+import com.IDentifyMe.classes.Router;
 import io.undertow.Undertow;
 
 
@@ -21,11 +17,6 @@ public class App {
                 .addHttpListener(8081, "localhost")
                 .setHandler(router)
                 .build();
-        try {
-            App.db  = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/movies_db", "root", "admin");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     private void start() {
@@ -36,4 +27,5 @@ public class App {
         App app = new App();
         app.start();
     }
+
 }
