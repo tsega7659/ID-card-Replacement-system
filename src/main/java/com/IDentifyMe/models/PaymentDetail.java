@@ -1,6 +1,8 @@
 package com.IDentifyMe.models;
 
-public class PaymentDetail {
+import java.io.Serializable;
+
+public class PaymentDetail implements Serializable{
     private int paymentID;
     private int requestID;
     private double amount;

@@ -33,6 +33,10 @@ public class StudentsTable extends DatabaseManager{
         }
         return false;
     }
+    public Student getStudent(Student studentID) {
+        return this.getStudent(studentID.getStudentID());
+    }
+
     public Student getStudent(String studentID) {
         String query = "SELECT * FROM " + tableName + " WHERE StudentID = ?";
         try {
@@ -48,14 +52,19 @@ public class StudentsTable extends DatabaseManager{
         }
         return null;
     }
+
     public Boolean updateStudent(Student student) {
+        return this.updateStudent(student, student.getStudentID());
+    }
+
+    public Boolean updateStudent(Student student, String studentID) {
         String query = "UPDATE " + tableName + " SET Name = ?, Email = ?, Password = ? WHERE StudentID = ?";
         try {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, student.getName());
             statement.setString(2, student.getEmail());
             statement.setString(3, student.getPassword());
-            statement.setString(4, student.getStudentID());
+            statement.setString(4, studentID);
             
             int rowsUpdated = statement.executeUpdate();
             statement.close();

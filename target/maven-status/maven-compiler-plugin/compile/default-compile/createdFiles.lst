@@ -1,0 +1,15 @@
+com/IDentifyMe/classes/Router.class
+com/IDentifyMe/models/FinanceDepartment.class
+com/IDentifyMe/database/IDReplacementDepartmentTable.class
+com/IDentifyMe/controller/StudentController.class
+com/IDentifyMe/classes/DatabaseManager.class
+com/IDentifyMe/models/Document.class
+com/IDentifyMe/models/IDReplacementDepartment.class
+com/IDentifyMe/App.class
+com/IDentifyMe/database/FinanceDepartmentTable.class
+com/IDentifyMe/database/StudentsTable.class
+com/IDentifyMe/database/DocumentsTable.class
+com/IDentifyMe/models/Student.class
+com/IDentifyMe/database/RequestsTable.class
+com/IDentifyMe/models/PaymentDetail.class
+com/IDentifyMe/models/Request.class

@@ -1,6 +1,8 @@
 package com.IDentifyMe.models;
 
-public class Document {
+import java.io.Serializable;
+
+public class Document implements Serializable{
     private int documentID;
     private int requestID;
     private String documentType;

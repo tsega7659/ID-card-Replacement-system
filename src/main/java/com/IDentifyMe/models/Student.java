@@ -1,9 +1,11 @@
 package com.IDentifyMe.models;
 
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Student {
+
+public class Student implements Serializable{
     private String StudentID ;
     private String Name;
     private String Email;
@@ -15,7 +17,7 @@ public class Student {
         this.Email = Email;
         this.Password = Password;
     }
-    
+
     public Student(ResultSet rs) throws SQLException {
         this.StudentID = rs.getString("StudentID");
         this.Name = rs.getString("Name");
@@ -44,5 +46,19 @@ public class Student {
     public void setEmail(String Email) {
         this.Email = Email;
     }
-    
+    public boolean validateAttributes() {
+        if (StudentID == null || StudentID.isEmpty() || !StudentID.matches("[a-zA-Z]{3}[0-9]{4}/[0-9]{2}")) {
+            return false;
+        }
+        if (Name == null || Name.isEmpty()) {
+            return false;
+        }
+        if (Email == null || Email.isEmpty() || !Email.matches("[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+")) {
+            return false;
+        }
+        if (Password == null || Password.isEmpty() || Password.length() < 8) {
+            return false;
+        }
+        return true;
+    }
 }
