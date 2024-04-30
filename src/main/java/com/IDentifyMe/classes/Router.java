@@ -12,7 +12,7 @@ public class Router extends RoutingHandler{
     private static final SessionManager sessionManager = new InMemorySessionManager("SESSION_MANAGER");
     
     public Router() {
-        this.get("/", constantStringHandler("<h1>Homepage<h1>"));
+        this.get("/", constantStringHandler("<h1>Homepage</h1>"));
         this.post("/student/login", StudentController::login);
         this.get("/student/logout", StudentController::logout);
         this.get("/student/getInfo", StudentController::getInfo);

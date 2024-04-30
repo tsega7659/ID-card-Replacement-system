@@ -2,8 +2,8 @@ package com.IDentifyMe;
 
 import com.IDentifyMe.classes.Router;
 import io.undertow.Undertow;
-import io.undertow.server.session.InMemorySessionManager;
-import io.undertow.server.session.SessionManager;
+import org.mindrot.jbcrypt.BCrypt;
+
 
 
 public class App {
@@ -29,5 +29,13 @@ public class App {
         app.start();
         System.out.println("Server running : http://" + HOST + ":" + PORT);
     }
+    public static String hashPassword(String password) {
+        String salt = BCrypt.gensalt();
+        String hashedPassword = BCrypt.hashpw(password, salt);
 
+        return hashedPassword;
+    }
+    public static boolean verifyPassword(String password, String hashedPassword) {
+        return BCrypt.checkpw(password, hashedPassword);
+    }
 }

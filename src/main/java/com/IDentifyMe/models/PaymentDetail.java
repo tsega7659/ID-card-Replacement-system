@@ -8,6 +8,7 @@ public class PaymentDetail implements Serializable{
     private double amount;
     private String receiptNumber;
     private String paymentDate;
+    private String status;
     private String paymentVerificationDate;
     private String bankName;
 
@@ -38,7 +39,12 @@ public class PaymentDetail implements Serializable{
     public String getReceiptNumber() {
         return receiptNumber;
     }
-
+    public String getStatus() {
+        return status;
+    }
+    public void setStatus(String stat) {
+        this.status=stat;
+    }
     public void setReceiptNumber(String receiptNumber) {
         this.receiptNumber = receiptNumber;
     }

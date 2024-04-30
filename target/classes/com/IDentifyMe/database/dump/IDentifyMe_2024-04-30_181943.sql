@@ -80,6 +80,7 @@ CREATE TABLE `PaymentDetails` (
   `PaymentDate` date DEFAULT NULL,
   `PaymentVerificationDate` date DEFAULT NULL,
   `BankName` varchar(50) DEFAULT NULL,
+  `status` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`PaymentID`),
   KEY `RequestID` (`RequestID`),
   CONSTRAINT `PaymentDetails_ibfk_1` FOREIGN KEY (`RequestID`) REFERENCES `Requests` (`RequestID`)
@@ -135,4 +136,4 @@ CREATE TABLE `Students` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-30 18:20:13
+-- Dump completed on 2024-05-01  1:11:58

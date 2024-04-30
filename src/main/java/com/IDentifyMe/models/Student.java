@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.IDentifyMe.App;
+
 
 public class Student implements Serializable{
     private String StudentID ;
@@ -45,6 +47,12 @@ public class Student implements Serializable{
     }
     public void setEmail(String Email) {
         this.Email = Email;
+    }
+    public void setPassword(String Password) {
+        this.Password = Password;
+    }
+    public void hashPassword(){
+        App.hashPassword(this.Password);
     }
     public boolean validateAttributes() {
         if (StudentID == null || StudentID.isEmpty() || !StudentID.matches("[a-zA-Z]{3}[0-9]{4}/[0-9]{2}")) {
