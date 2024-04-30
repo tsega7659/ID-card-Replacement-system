@@ -10,8 +10,6 @@ public abstract class DatabaseManager {
     private final String JDBC_USERNAME = "username";
     private final String JDBC_PASSWORD = "password";
     private final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    private String TABLE_NAME;
-
 
     protected Connection connection;
 
@@ -35,9 +33,4 @@ public abstract class DatabaseManager {
             }
         }
     }
-
-    public abstract void create();
-    public abstract void read();
-    public abstract void update();
-    public abstract void delete();
 }

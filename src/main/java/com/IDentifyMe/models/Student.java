@@ -1,5 +1,8 @@
 package com.IDentifyMe.models;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class Student {
     private String StudentID ;
     private String Name;
@@ -12,6 +15,14 @@ public class Student {
         this.Email = Email;
         this.Password = Password;
     }
+    
+    public Student(ResultSet rs) throws SQLException {
+        this.StudentID = rs.getString("StudentID");
+        this.Name = rs.getString("Name");
+        this.Email = rs.getString("Email");
+        this.Password = rs .getString("Password");
+    }
+
     public String getStudentID() {
         return this.StudentID;
     }
