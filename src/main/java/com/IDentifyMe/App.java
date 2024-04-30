@@ -1,6 +1,5 @@
 package com.IDentifyMe;
 
-import java.sql.Connection;
 import com.IDentifyMe.classes.Router;
 import io.undertow.Undertow;
 
@@ -8,8 +7,6 @@ import io.undertow.Undertow;
 public class App {
     private Router router;
     private Undertow server;
-    public static Connection db;
-
 
     private App() {
         this.router = new Router();
