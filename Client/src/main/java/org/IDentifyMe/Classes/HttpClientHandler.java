@@ -56,7 +56,7 @@ public class HttpClientHandler {
     public void sendPostRequest(String url, Function<HttpResponse<String>, String> validator, String data) {
         try {
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(new URI(url))
+                    .uri(new URI(BASE_URL+url))
                     .POST(HttpRequest.BodyPublishers.ofString(data))
                     .build();
 

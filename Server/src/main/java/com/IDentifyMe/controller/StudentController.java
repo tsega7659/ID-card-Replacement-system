@@ -1,19 +1,14 @@
 package com.IDentifyMe.controller;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
+
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.nio.ByteBuffer;
-
 import org.json.JSONObject;
-
 import com.IDentifyMe.App;
 import com.IDentifyMe.classes.Router;
+import com.IDentifyMe.classes.Serializer;
 import com.IDentifyMe.database.StudentsTable;
 import com.IDentifyMe.models.Student;
-
 import io.undertow.server.HttpServerExchange;
 import io.undertow.server.session.Session;
 import io.undertow.server.session.SessionManager;
@@ -25,9 +20,7 @@ public class StudentController {
         if (exchange.getAttachment(SessionManager.ATTACHMENT_KEY) == null) {
             exchange.getRequestReceiver().receiveFullBytes((exc, message) -> {
                 try {
-                    ByteArrayInputStream bais = new ByteArrayInputStream(message);
-                    ObjectInputStream obj = new ObjectInputStream(bais);
-                    Student stud = (Student) obj.readObject();
+                    Student stud = Serializer.deserialize(message);
                     if (stud == null || stud.getStudentID() == null || stud.getPassword() == null) {
                         throw new IllegalArgumentException("Invalid Student object");
                     }
@@ -55,9 +48,7 @@ public class StudentController {
         if (exchange.getAttachment(SessionManager.ATTACHMENT_KEY) != null) {
             exchange.getRequestReceiver().receiveFullBytes((exc, message) -> {
                 try {
-                    ByteArrayInputStream bais = new ByteArrayInputStream(message);
-                    ObjectInputStream obj = new ObjectInputStream(bais);
-                    Student stud = (Student) obj.readObject();
+                    Student stud = Serializer.deserialize(message);
                     if (stud == null || !stud.validateAttributes()) {
                         throw new IllegalArgumentException("Invalid Student object");
                     }
@@ -96,11 +87,7 @@ public class StudentController {
                 Student student = (Student) session.getAttribute("user");
                 if (student != null) {
                     try {
-                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                        ObjectOutputStream oos = new ObjectOutputStream(baos);
-                        oos.writeObject(student);
-                        oos.close();
-                        byte[] studentBytes = baos.toByteArray();
+                        byte[] studentBytes = Serializer.serialize(student);
                         exchange.getResponseHeaders().put(Headers.CONTENT_TYPE, "application/octet-stream");
                         exchange.getResponseSender().send(ByteBuffer.wrap(studentBytes));
                     } catch (IOException e) {
