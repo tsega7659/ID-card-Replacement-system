@@ -1,8 +1,14 @@
 package com.IDentifyMe;
 
+import com.IDentifyMe.classes.DatabaseManager;
 import com.IDentifyMe.classes.Router;
+import com.IDentifyMe.database.StudentsTable;
+
 import io.undertow.Undertow;
-import org.mindrot.jbcrypt.BCrypt;
+import io.undertow.server.session.InMemorySessionManager;
+import io.undertow.server.session.SessionAttachmentHandler;
+import io.undertow.server.session.SessionCookieConfig;
+import io.undertow.server.session.SessionManager;
 
 public class App {
     private Router router;
@@ -11,10 +17,15 @@ public class App {
     public final static String HOST = "localhost";
 
     private App() {
+        SessionManager sessionManager = new InMemorySessionManager("IDentifyMe");
+        SessionCookieConfig sessionCookieConfig=new SessionCookieConfig();
+        sessionCookieConfig.setCookieName("SESSION_ID");
+        
         this.router = new Router();
+        SessionAttachmentHandler sessionAttachmentHandler = new SessionAttachmentHandler(router, sessionManager, sessionCookieConfig);
         this.server = Undertow.builder()
-                .addHttpListener( PORT, HOST)
-                .setHandler(router)
+                .addHttpListener(PORT, HOST)
+                .setHandler(sessionAttachmentHandler)
                 .build();
     }
 
@@ -23,17 +34,10 @@ public class App {
     }
 
     public static void main(String[] args) {
+        DatabaseManager db = new StudentsTable();
+        System.out.println("Database connection successful");
         App app = new App();
         app.start();
         System.out.println("Server running : http://" + HOST + ":" + PORT);
-    }
-    public static String hashPassword(String password) {
-        String salt = BCrypt.gensalt();
-        String hashedPassword = BCrypt.hashpw(password, salt);
-
-        return hashedPassword;
-    }
-    public static boolean verifyPassword(String password, String hashedPassword) {
-        return BCrypt.checkpw(password, hashedPassword);
     }
 }

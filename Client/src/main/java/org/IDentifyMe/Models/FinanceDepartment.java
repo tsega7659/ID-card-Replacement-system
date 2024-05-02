@@ -1,10 +1,10 @@
-package com.IDentifyMe.models;
+package org.IDentifyMe.Models;
 
 import java.io.Serializable;
 
 import org.json.JSONObject;
 
-public class FinanceDepartment implements Serializable {
+public class FinanceDepartment implements Serializable{
     private int employeeID;
     private String name;
     private String email;
@@ -18,14 +18,14 @@ public class FinanceDepartment implements Serializable {
         this.password = password;
     }
 
-    public FinanceDepartment(JSONObject json) {
+    public FinanceDepartment(JSONObject json ){
         this(
-                json.getInt("employeeID"),
-                json.getString("name"),
-                json.getString("email"),
-                json.getString("password"));
+            json.getInt("employeeID"),
+            json.getString("name"),
+            json.getString("email"),
+            json.getString("password")
+        );
     }
-
     public JSONObject toJSON() {
         JSONObject json = new JSONObject();
         json.put("employeeID", this.employeeID);
@@ -66,7 +66,7 @@ public class FinanceDepartment implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-
+    
     public boolean validateAttributes() {
         if (name == null || name.isEmpty()) {
             return false;

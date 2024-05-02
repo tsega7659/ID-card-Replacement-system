@@ -3,6 +3,7 @@ module org.IDentifyMe {
     requires javafx.fxml;
     requires java.net.http;
     requires atlantafx.base;
+    requires org.json;
 
 
     opens org.IDentifyMe.Controller to javafx.fxml;

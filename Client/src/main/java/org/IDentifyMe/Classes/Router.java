@@ -1,5 +1,6 @@
 package org.IDentifyMe.Classes;
 
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,6 +11,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
+
 
 public class Router {
     private Stage stage;
@@ -36,10 +38,12 @@ public class Router {
             stage.setScene(new Scene(root));
             return true;
         } catch (IOException e) {
-            CreatePopup("Error", "An error occurred while navigating to the page", Alert.AlertType.ERROR, true, e.getMessage());
+            CreatePopup("Error", "An error occurred while navigating to the page", Alert.AlertType.ERROR, true,
+                    e.getMessage());
         }
         return false;
     }
+
     public boolean addViewTo(String name, Pane root) {
         try {
             if (!routes.containsKey(name)) {
@@ -50,7 +54,8 @@ public class Router {
             root.getChildren().add(child);
             return true;
         } catch (IOException e) {
-            CreatePopup("Error", "An error occurred while navigating to the page", Alert.AlertType.ERROR, true, e.getMessage());
+            CreatePopup("Error", "An error occurred while navigating to the page", Alert.AlertType.ERROR, true,
+                    e.getMessage());
         }
         return false;
     }
@@ -66,21 +71,24 @@ public class Router {
             root.getChildren().add(child);
             return true;
         } catch (IOException e) {
-            CreatePopup("Error", "An error occurred while navigating to the page", Alert.AlertType.ERROR, true, e.getMessage());
+            CreatePopup("Error", "An error occurred while navigating to the page", Alert.AlertType.ERROR, true,
+                    e.getMessage());
         }
         return false;
     }
 
     public void CreatePopup(String title, String message, Alert.AlertType type, boolean wait, String content) {
-        Alert alert = new Alert(type);
-        alert.setTitle(title);
-        alert.setHeaderText(message);
-        alert.setContentText(content);
-        if (wait) {
-            alert.showAndWait();
-        } else {
-            alert.show();
-        }    
+        Platform.runLater(() -> {
+            Alert alert = new Alert(type);
+            alert.setTitle(title);
+            alert.setHeaderText(message);
+            alert.setContentText(content);
+            if (wait) {
+                alert.showAndWait();
+            } else {
+                alert.show();
+            }
+        });
     }
 
     public boolean navigateBack() {

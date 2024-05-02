@@ -1,0 +1,15 @@
+.label {
+    -fx-text-fill: black;
+}
+.choice-box {
+    -fx-font-size: 14px;
+    -fx-margin: 0 0 10 0; /* Add margin to the bottom of the choice box */
+    -fx-background-color: #e6e6e6; /* Transparent background */
+    -fx-border-color: #3498DB; /* Default border color */
+    -fx-border-width: 0 0 2 0; /* Bottom border only */
+}
+
+/* Apply styles when the choice box is focused */
+.choice-box:focused {
+    -fx-border-color: #2980B9; /* Blue border color when focused */
+}

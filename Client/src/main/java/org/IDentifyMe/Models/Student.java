@@ -1,8 +1,6 @@
-package com.IDentifyMe.models;
+package org.IDentifyMe.Models;
 
 import java.io.Serializable;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import org.json.JSONObject;
 
@@ -20,14 +18,11 @@ public class Student implements Serializable{
         this.Password = Password;
     }
 
-    public Student(ResultSet rs) throws SQLException {
-        this.StudentID = rs.getString("StudentID");
-        this.Name = rs.getString("Name");
-        this.Email = rs.getString("Email");
-        this.Password = rs .getString("Password");
+    public Student(String StudentID, String Password)  {
+        this(StudentID, "", "", Password);
     }
 
-        public Student(JSONObject json)  {
+    public Student(JSONObject json)  {
         this(
             json.getString("StudentID"),
             json.getString("Name"),

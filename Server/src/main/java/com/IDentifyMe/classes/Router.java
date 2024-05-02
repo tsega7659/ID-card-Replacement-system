@@ -6,6 +6,7 @@ import io.undertow.server.HttpServerExchange;
 import io.undertow.server.RoutingHandler;
 import io.undertow.server.handlers.resource.ClassPathResourceManager;
 import io.undertow.server.session.InMemorySessionManager;
+import io.undertow.server.session.SessionCookieConfig;
 import io.undertow.server.session.SessionManager;
 import io.undertow.util.Headers;
 import java.io.IOException;
@@ -16,7 +17,6 @@ import com.IDentifyMe.App;
 import com.IDentifyMe.controller.*;
 
 public class Router extends RoutingHandler {
-    private static final SessionManager sessionManager = new InMemorySessionManager("SESSION_MANAGER");
 
     public Router() {
         this.get("/", Handlers.resource(new ClassPathResourceManager(App.class.getClassLoader(), "webroot")));
@@ -25,6 +25,7 @@ public class Router extends RoutingHandler {
         this.get("/student/logout", StudentController::logout);
         this.get("/student/getInfo", StudentController::getInfo);
         this.post("/student/update", StudentController::update);
+
     }
 
     private void serveDynamicImage(HttpServerExchange exchange) throws IOException {
@@ -61,9 +62,4 @@ public class Router extends RoutingHandler {
     public void handleRequest(HttpServerExchange exchange) throws Exception {
         super.handleRequest(exchange);
     }
-
-    public static SessionManager getSessionManager() {
-        return sessionManager;
-    }
-
 }

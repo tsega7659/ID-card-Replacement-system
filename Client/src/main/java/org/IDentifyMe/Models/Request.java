@@ -1,4 +1,4 @@
-package com.IDentifyMe.models;
+package org.IDentifyMe.Models;
 
 import java.io.Serializable;
 import java.util.Date;

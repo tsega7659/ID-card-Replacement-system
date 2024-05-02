@@ -1,4 +1,4 @@
-package com.IDentifyMe.models;
+package org.IDentifyMe.Models;
 
 import java.io.Serializable;
 
@@ -14,7 +14,7 @@ public class PaymentDetail implements Serializable{
     private String paymentVerificationDate;
     private String bankName;
 
-        public PaymentDetail(int paymentID, int requestID, double amount, String receiptNumber, String paymentDate, String status, String paymentVerificationDate, String bankName) {
+    public PaymentDetail(int paymentID, int requestID, double amount, String receiptNumber, String paymentDate, String status, String paymentVerificationDate, String bankName) {
         this.paymentID = paymentID;
         this.requestID = requestID;
         this.amount = amount;
@@ -58,7 +58,6 @@ public class PaymentDetail implements Serializable{
         json.put("bankName", this.bankName);
         return json;
     }
-
     public int getPaymentID() {
         return paymentID;
     }
