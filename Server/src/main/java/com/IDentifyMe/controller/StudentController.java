@@ -58,7 +58,7 @@ public class StudentController {
     }
 
     public static void update(HttpServerExchange exchange) {
-        if (exchange.getAttachment(SessionManager.ATTACHMENT_KEY) == null) {
+        if (getSession(exchange) == null || getAttribute(getSession(exchange)) == null) {
             sendResponse(exchange, 401, "falid", "login");
             return;
         }
@@ -71,8 +71,8 @@ public class StudentController {
                     throw new IllegalArgumentException("Invalid Student object");
                 }
                 StudentsTable studT = new StudentsTable();
-                Session session = exchange.getAttachment(SessionManager.ATTACHMENT_KEY).getSession(exchange, null);
-                if (studT.updateStudent(stud, ((Student) session.getAttribute("user")).getStudentID())) {
+                if (studT.updateStudent(stud, getAttribute(getSession(exchange)))) {
+                    getSession(exchange).setAttribute("user", stud);
                     sendResponse(exchange, 200, "successful", "Update successful");
                 } else {
                     sendResponse(exchange, 500, "failed", "Server error");
@@ -88,9 +88,8 @@ public class StudentController {
     }
 
     public static void logout(HttpServerExchange exchange) {
-        if (exchange.getAttachment(SessionManager.ATTACHMENT_KEY) != null) {
-            Session session = exchange.getAttachment(SessionManager.ATTACHMENT_KEY).getSession(exchange, null);
-            session.invalidate(exchange);
+        if (getSession(exchange) != null || getAttribute(getSession(exchange)) != null) {
+            getSession(exchange).invalidate(exchange);
             sendResponse(exchange, 200, "successful", "Logout successful");
         } else {
             sendResponse(exchange, 401, "falid", "No active session to logout");
@@ -98,15 +97,15 @@ public class StudentController {
     }
 
     public static void getInfo(HttpServerExchange exchange) {
-        if (exchange.getAttachment(SessionManager.ATTACHMENT_KEY) == null) {
+        if ((getSession(exchange) == null || getAttribute(getSession(exchange)) == null)) {
             sendResponse(exchange, 401, "falid", "login");
             return;
         }
-        Session session = exchange.getAttachment(SessionManager.ATTACHMENT_KEY).getSession(exchange, null);
-        Student student = (Student) session.getAttribute("user");
+        Student student = getAttribute(getSession(exchange));
         if (student != null) {
             exchange.getResponseSender().send(student.toJSON().toString());
         } else {
+            getSession(exchange).invalidate(exchange);
             sendResponse(exchange, 401, "falid", "No student information in session");
         }
     }

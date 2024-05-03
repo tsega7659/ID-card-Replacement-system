@@ -68,7 +68,6 @@ public class HttpClientHandler {
                     .uri(new URI(BASE_URL + url))
                     .POST(HttpRequest.BodyPublishers.ofString(data))
                     .header("Accept", "*/*")
-                    .header("User-Agent", "Thunder Client (https://www.thunderclient.com)")
                     .header("Content-Type", "application/json")
                     .header("Cookie", cookie)
                     .build();
@@ -89,7 +88,6 @@ public class HttpClientHandler {
                     .uri(new URI(BASE_URL + url))
                     .POST(HttpRequest.BodyPublishers.ofByteArray(data))
                     .header("Accept", "*/*")
-                    .header("User-Agent", "Thunder Client (https://www.thunderclient.com)")
                     .header("Content-Type", "application/json")
                     .header("Cookie", cookie)
                     .build();
@@ -110,7 +108,6 @@ public class HttpClientHandler {
                     .uri(new URI(BASE_URL + url))
                     .POST(HttpRequest.BodyPublishers.noBody())
                     .header("Accept", "*/*")
-                    .header("User-Agent", "Thunder Client (https://www.thunderclient.com)")
                     .header("Content-Type", "application/json")
                     .header("Cookie", cookie)
                     .build();

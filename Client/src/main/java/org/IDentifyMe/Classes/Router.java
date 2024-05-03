@@ -17,7 +17,6 @@ public class Router {
     private Map<String, String> routes = new HashMap<>();
     private final String PATH = "/org/IDentifyMe/view/";
     private Stack<String> history;
-    private Stack<StringPanePair> navHistory;
 
     public Router(Stage stage) {
         this.stage = stage;
@@ -65,8 +64,7 @@ public class Router {
             if (!routes.containsKey(name)) {
                 throw new IOException("The route does not exist");
             }
-            StringPanePair pair = new StringPanePair(name, root);
-            navHistory.push(pair);
+
             Parent child = FXMLLoader.load(getClass().getResource(routes.get(name)));
             root.getChildren().clear();
             root.getChildren().add(child);
@@ -78,28 +76,11 @@ public class Router {
         return false;
     }
 
-    public boolean reloadView() {
-        if (history.size() > 0) {
-            StringPanePair map = navHistory.pop();
-            return updateViewTo(map.getText(), map.getPane());
-        }
-        return false;
-    }
-
-    public boolean navigateViewBack() {
-        if (history.size() > 1) {
-            navHistory.pop();
-            StringPanePair map = navHistory.peek();
-            return updateViewTo(map.getText(), map.getPane());
-        } else if (history.size() == 1) {
-            return navigateTo(history.peek());
-        }
-        return false;
-    }
 
     public boolean navigateBack() {
         if (history.size() > 1) {
             history.pop();
+            System.out.println(history.peek());
             return navigateTo(history.peek());
         }
         return false;
@@ -127,20 +108,3 @@ public class Router {
     }
 }
 
-class StringPanePair {
-    private String text;
-    private Pane pane;
-
-    public StringPanePair(String text, Pane pane) {
-        this.text = text;
-        this.pane = pane;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public Pane getPane() {
-        return pane;
-    }
-}

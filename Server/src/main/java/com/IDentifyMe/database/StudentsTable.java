@@ -55,7 +55,7 @@ public class StudentsTable extends DatabaseManager {
         return null;
     }
 
-    public Boolean updateStudent(Student student) {
+    public Boolean updateStudent(Student student, Student studentID) {
         return this.updateStudent(student, student.getStudentID());
     }
 
