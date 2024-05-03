@@ -14,32 +14,24 @@ import javafx.scene.control.Alert;
 import org.IDentifyMe.MainApp;
 
 public class HttpClientHandler {
-    private HttpClient client;
+    private HttpClient client = HttpClient.newBuilder().build();
     private final String BASE_URL = "http://localhost:8081";
-    private final String PORT = "8081";
-    private Function<Throwable, ? extends String> handleException;
-    private static String cookie ="";
+    private static String cookie = "";
 
-    public HttpClientHandler() {
-        // Initialize the CookieManager with ACCEPT_ALL policy
 
-        this.client = HttpClient.newBuilder()
-                .build();
-
-        this.handleException = (error) -> {
-            if (error instanceof CompletionException && error.getCause() instanceof InterruptedException) {
-                MainApp.router.CreatePopup("Error", "An error occurred while sending the request",
-                        Alert.AlertType.ERROR, true, error.getCause().getMessage());
-            } else if (error instanceof CompletionException && error.getCause() instanceof IOException) {
-                MainApp.router.CreatePopup("Error", "An error occurred while sending the request",
-                        Alert.AlertType.ERROR, true, error.getCause().getMessage());
-            } else {
-                MainApp.router.CreatePopup("Error", "An error occurred while sending the request",
-                        Alert.AlertType.ERROR, true, error.getMessage());
-            }
-            return null;
+    private Function<Throwable, String> handleException = (error) -> {
+        if (error instanceof CompletionException && error.getCause() instanceof InterruptedException) {
+            MainApp.router.CreatePopup("Error", "An error occurred while sending the request",
+                    Alert.AlertType.ERROR, true, error.getCause().getMessage());
+        } else if (error instanceof CompletionException && error.getCause() instanceof IOException) {
+            MainApp.router.CreatePopup("Error", "An error occurred while sending the request",
+                    Alert.AlertType.ERROR, true, error.getCause().getMessage());
+        } else {
+            MainApp.router.CreatePopup("Error", "An error occurred while sending the request",
+                    Alert.AlertType.ERROR, true, error.getMessage());
         };
-    }
+        return null;
+    };
 
     public void sendGetRequest(String url, Function<HttpResponse<String>, String> validator) {
         try {
@@ -111,6 +103,7 @@ public class HttpClientHandler {
                     true, e.getMessage());
         }
     }
+
     public void sendPostRequest(String url, Function<HttpResponse<String>, String> validator) {
         try {
             HttpRequest request = HttpRequest.newBuilder()

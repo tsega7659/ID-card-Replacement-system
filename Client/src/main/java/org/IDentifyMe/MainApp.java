@@ -18,9 +18,10 @@ public class MainApp extends Application {
         MainApp.setUserAgentStylesheet(new PrimerDark().getUserAgentStylesheet());
 
         router = new Router(stage);
-        router.addRoute("home", "login.fxml");
+        router.addRoute("login", "login.fxml");
         router.addRoute("studentDashboard", "StudentDashboard.fxml");
-        router.navigateTo("home");
+        router.addRoute("studentHome", "StudentHome.fxml");
+        router.navigateTo("login");
 
         stage.getIcons().add(new Image(getClass().getResource("/org/IDentifyMe/icons/icon.png").toExternalForm()));
         stage.centerOnScreen();

@@ -48,10 +48,10 @@ public class LoginController {
         if (response.statusCode() == 200) {
             JSONObject json = new JSONObject(response.body());
             if (json.getString("status").toLowerCase().equals("successful")) {
-                MainApp.router.CreatePopup("Success", "Login successful!",
-                        Alert.AlertType.CONFIRMATION, false, "");
+                MainApp.router.CreatePopup("Success", "Successful!",
+                        Alert.AlertType.CONFIRMATION, false, json.getString("message"));
                 Platform.runLater(() -> {
-                    MainApp.router.navigateTo("studentDashboard");
+                    MainApp.router.navigateTo("studentHome");
                 });
             }
         } else {
