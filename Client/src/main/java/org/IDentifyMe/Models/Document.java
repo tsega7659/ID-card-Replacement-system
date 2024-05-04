@@ -1,10 +1,8 @@
 package org.IDentifyMe.Models;
 
-import java.io.Serializable;
-
 import org.json.JSONObject;
 
-public class Document implements Serializable{
+public class Document {
     private int documentID;
     private int requestID;
     private String documentType;

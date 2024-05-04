@@ -1,10 +1,11 @@
 package com.IDentifyMe.models;
 
-import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import org.json.JSONObject;
 
-public class FinanceDepartment implements Serializable {
+public class FinanceDepartment {
     private int employeeID;
     private String name;
     private String email;
@@ -16,6 +17,13 @@ public class FinanceDepartment implements Serializable {
         this.name = name;
         this.email = email;
         this.password = password;
+    }
+
+    public FinanceDepartment(ResultSet rs) throws SQLException {
+        this.employeeID = rs.getInt("EmployeeID");
+        this.name = rs.getString("Name");
+        this.email = rs.getString("Email");
+        this.password = rs .getString("Password");
     }
 
     public FinanceDepartment(JSONObject json) {

@@ -1,10 +1,8 @@
 package org.IDentifyMe.Models;
 
-import java.io.Serializable;
-
 import org.json.JSONObject;
 
-public class IDReplacementDepartment implements Serializable {
+public class IDReplacementDepartment {
     private int employeeID;
     private String name;
     private String email;

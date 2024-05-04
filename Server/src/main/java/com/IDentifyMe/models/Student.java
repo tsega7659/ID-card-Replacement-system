@@ -1,13 +1,12 @@
 package com.IDentifyMe.models;
 
-import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.json.JSONObject;
 
 
-public class Student implements Serializable{
+public class Student {
     private String StudentID ;
     private String Name;
     private String Email;

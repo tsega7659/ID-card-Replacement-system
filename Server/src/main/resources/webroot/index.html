@@ -1,12 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Home Page</title>
-    <link rel="icon" href="/images/icon.png" type="image/x-ion">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID Card Replacement System - Homepage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 30px;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+            font-size: 36px;
+            letter-spacing: 2px;
+        }
+        nav {
+            background-color: #444;
+            padding: 20px;
+            text-align: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 8px;
+            margin: 0 20px;
+            background-color: #666;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+        }
+        nav a:hover {
+            background-color: #555;
+        }
+        section {
+            padding: 30px;
+            margin: 30px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to IDentifyMe</h1>
-    <p>This is the home page of your ID card replacement system.</p>
-    <img src="/images/icon.png">
+    <header>
+        <h1>ID Card Replacement System</h1>
+    </header>
+    <nav>
+        <a href="#student">Student Interface</a>
+        <a href="#finance">Finance Department Interface</a>
+        <a href="#id-replacement">ID Replacement Department Interface</a>
+    </nav>
+    <section id="student">
+        <h2>Student Interface</h2>
+        <p>Students can log in using their credentials and select the type of request: ID card renewal or ID card replacement. They can upload necessary documents and pay the fee online.</p>
+    </section>
+    <section id="finance">
+        <h2>Finance Department Interface</h2>
+        <p>The finance department can view pending requests, verify payment details, and approve or deny requests based on banking information provided by students.</p>
+    </section>
+    <section id="id-replacement">
+        <h2>ID Replacement Department Interface</h2>
+        <p>The ID replacement department can see approved requests, check documents provided by students, and set appointments for ID pickup or deny requests.</p>
+    </section>
 </body>
 </html>

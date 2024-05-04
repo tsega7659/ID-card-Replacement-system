@@ -18,7 +18,7 @@
    <top>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Pane prefHeight="173.0" prefWidth="980.0" style="-fx-background-color: #2D75E8;">
+            <Pane fx:id="headerBar" prefHeight="173.0" prefWidth="980.0">
                <children>
                   <HBox alignment="CENTER" layoutX="45.0" layoutY="40.0">
                      <children>
@@ -44,7 +44,13 @@
             </Pane>
             <BorderPane prefHeight="37.0" prefWidth="947.0" style="-fx-background-color: -color-bg-subtle;">
                <left>
-                  <HBox alignment="CENTER" prefHeight="36.0" prefWidth="296.0" spacing="15.0" BorderPane.alignment="CENTER">
+                  <HBox alignment="CENTER" prefHeight="36.0" prefWidth="296.0" spacing="15.0" BorderPane.alignment="CENTER" />
+               </left>
+               <center>
+                  <HBox alignment="CENTER" prefHeight="36.0" prefWidth="446.0" BorderPane.alignment="CENTER" />
+               </center>
+               <right>
+                  <HBox alignment="CENTER" prefHeight="36.0" prefWidth="320.0" spacing="15.0" BorderPane.alignment="CENTER">
                      <children>
                         <Button mnemonicParsing="false" onAction="#previousPage" prefHeight="28.0" prefWidth="49.0" style="-fx-background-color: -color-bg-inset;">
                            <graphic>
@@ -56,19 +62,13 @@
                               <FontAwesomeIconView fill="#2d75e8" glyphName="REFRESH" size="20" />
                            </graphic>
                         </Button>
-                        <Button layoutX="122.0" layoutY="10.0" mnemonicParsing="false" onAction="#homePage" prefHeight="28.0" prefWidth="49.0" style="-fx-background-color: -color-bg-inset;">
+                        <Button mnemonicParsing="false" onAction="#homePage" prefHeight="28.0" prefWidth="49.0" style="-fx-background-color: -color-bg-inset;">
                            <graphic>
                               <FontAwesomeIconView fill="#2d75e8" glyphName="HOME" size="20" />
                            </graphic>
                         </Button>
                      </children>
                   </HBox>
-               </left>
-               <center>
-                  <HBox alignment="CENTER" prefHeight="36.0" prefWidth="446.0" BorderPane.alignment="CENTER" />
-               </center>
-               <right>
-                  <HBox alignment="CENTER" prefHeight="32.0" prefWidth="227.0" BorderPane.alignment="CENTER" />
                </right>
             </BorderPane>
          </children>
@@ -90,54 +90,54 @@
                <children>
                   <VBox alignment="BOTTOM_CENTER">
                      <children>
-                        <Button fx:id="btnDashboard" contentDisplay="TOP" mnemonicParsing="false" prefHeight="181.0" prefWidth="242.0" text="Dashboard">
+                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="181.0" prefWidth="242.0" text="Dashboard">
                            <graphic>
-                              <FontAwesomeIconView fill="#2d75e8" glyphName="HOME" size="50" />
+                              <FontAwesomeIconView fill="#2d75e8" glyphName="PIE_CHART" size="50" />
                            </graphic>
                         </Button>
                      </children>
                   </VBox>
                   <VBox alignment="BOTTOM_CENTER" GridPane.columnIndex="1">
                      <children>
-                        <Button fx:id="btnStudents" contentDisplay="TOP" mnemonicParsing="false" prefHeight="181.0" prefWidth="242.0" text="Students">
+                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="181.0" prefWidth="242.0" text="New Request">
                            <graphic>
-                              <FontAwesomeIconView fill="#2d75e8" glyphName="GROUP" size="50" />
+                              <Icons525View fill="#2d75e8" glyphName="CIRCLEADD" size="50" />
                            </graphic>
                         </Button>
                      </children>
                   </VBox>
                   <VBox alignment="BOTTOM_CENTER" GridPane.columnIndex="2">
                      <children>
-                        <Button fx:id="btn_Timetable" contentDisplay="TOP" mnemonicParsing="false" prefHeight="181.0" prefWidth="242.0" text="Timetable">
+                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="181.0" prefWidth="242.0" text="Notification">
                            <graphic>
-                              <FontAwesomeIconView fill="#2d75e8" glyphName="CALENDAR_CHECK_ALT" size="50" text="" />
+                              <FontAwesomeIconView fill="#2d75e8" glyphName="BELL_ALT" size="50" />
                            </graphic>
                         </Button>
                      </children>
                   </VBox>
                   <VBox alignment="TOP_CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <children>
-                        <Button fx:id="btnSettings" contentDisplay="TOP" mnemonicParsing="false" prefHeight="181.0" prefWidth="242.0" text="Settings">
+                        <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#logout" prefHeight="181.0" prefWidth="242.0" text="Logout">
                            <graphic>
-                              <FontAwesomeIconView fill="#2d75e8" glyphName="SLIDERS" size="50" />
+                              <Icons525View fill="#2d75e8" glyphName="LOGOUT" size="60" />
                            </graphic>
                         </Button>
                      </children>
                   </VBox>
                   <VBox alignment="TOP_CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
-                        <Button fx:id="btnUpdate" contentDisplay="TOP" mnemonicParsing="false" prefHeight="181.0" prefWidth="242.0" text="Update">
+                        <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#AboutPage" prefHeight="181.0" prefWidth="242.0" text="Help">
                            <graphic>
-                              <FontAwesomeIconView fill="#2d75e8" glyphName="EXCHANGE" size="50" />
+                              <FontAwesomeIconView fill="#2d75e8" glyphName="QUESTION_CIRCLE_ALT" size="60" />
                            </graphic>
                         </Button>
                      </children>
                   </VBox>
                   <VBox alignment="TOP_CENTER" GridPane.rowIndex="1">
                      <children>
-                        <Button fx:id="btnClasses" contentDisplay="TOP" mnemonicParsing="false" prefHeight="181.0" prefWidth="242.0" text="Classes">
+                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="181.0" prefWidth="242.0" text="Profile">
                            <graphic>
-                              <FontAwesomeIconView fill="#2d75e8" glyphName="INDENT" size="50" />
+                              <FontAwesomeIconView fill="#2d75e8" glyphName="USER_CIRCLE_ALT" size="60" />
                            </graphic>
                         </Button>
                      </children>

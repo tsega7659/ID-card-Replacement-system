@@ -1,10 +1,11 @@
 package com.IDentifyMe.models;
 
-import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import org.json.JSONObject;
 
-public class IDReplacementDepartment implements Serializable {
+public class IDReplacementDepartment {
     private int employeeID;
     private String name;
     private String email;
@@ -15,6 +16,13 @@ public class IDReplacementDepartment implements Serializable {
         this.name = name;
         this.email = email;
         this.password = password;
+    }
+
+    public IDReplacementDepartment(ResultSet rs) throws SQLException {
+        this.employeeID = rs.getInt("EmployeeID");
+        this.name = rs.getString("Name");
+        this.email = rs.getString("Email");
+        this.password = rs .getString("Password");
     }
 
     public IDReplacementDepartment(JSONObject json) {

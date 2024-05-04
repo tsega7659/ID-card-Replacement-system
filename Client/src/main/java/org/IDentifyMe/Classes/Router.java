@@ -5,12 +5,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Stack;
+
+import org.IDentifyMe.MainApp;
 
 public class Router {
     private Stage stage;
@@ -21,6 +25,13 @@ public class Router {
     public Router(Stage stage) {
         this.stage = stage;
         this.history = new Stack<>();
+
+        this.addRoute("login", "login.fxml");
+        this.addRoute("studentDashboard", "StudentDashboard.fxml");
+        this.addRoute("studentHome", "StudentHome.fxml");
+        this.addRoute("financeHome", "FinanceHome.fxml");
+        this.addRoute("ID_DepartmentHome", "ID_DepartmentHome.fxml");
+        this.addRoute("about", "AboutPage.fxml");
     }
 
     public void addRoute(String name, String fxmlFile) {
@@ -32,14 +43,32 @@ public class Router {
             if (!routes.containsKey(name)) {
                 throw new IOException("The route does not exist");
             }
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource(routes.get(name)))));
             history.push(name);
-            Parent root = FXMLLoader.load(getClass().getResource(routes.get(name)));
-            stage.setScene(new Scene(root));
             return true;
         } catch (IOException e) {
+            e.printStackTrace();
             CreatePopup("Error", "An error occurred while navigating to the page", Alert.AlertType.ERROR, true,
                     e.getMessage());
         }
+        return false;
+    }
+
+    public boolean logout() {
+        Platform.runLater(() -> {
+            MainApp.router.CreatePopup("Success", "Successful!",
+                    Alert.AlertType.INFORMATION, false, "");
+            ;
+            try {
+                stage.setScene(new Scene(FXMLLoader.load(getClass().getResource(PATH + "login.fxml"))));
+            } catch (IOException e) {
+                e.printStackTrace();
+                CreatePopup("Error", "An error occurred while navigating to the page", Alert.AlertType.ERROR, true,
+                        e.getMessage());
+            }
+            MainApp.User = null;
+            HttpClientHandler.clearCookie();
+        });
         return false;
     }
 
@@ -48,9 +77,7 @@ public class Router {
             if (!routes.containsKey(name)) {
                 throw new IOException("The route does not exist");
             }
-            history.push(name);
-            Parent child = FXMLLoader.load(getClass().getResource(routes.get(name)));
-            root.getChildren().add(child);
+            root.getChildren().add(FXMLLoader.load(getClass().getResource(routes.get(name))));
             return true;
         } catch (IOException e) {
             CreatePopup("Error", "An error occurred while navigating to the page", Alert.AlertType.ERROR, true,
@@ -64,10 +91,8 @@ public class Router {
             if (!routes.containsKey(name)) {
                 throw new IOException("The route does not exist");
             }
-
-            Parent child = FXMLLoader.load(getClass().getResource(routes.get(name)));
             root.getChildren().clear();
-            root.getChildren().add(child);
+            root.getChildren().add(FXMLLoader.load(getClass().getResource(routes.get(name))));
             return true;
         } catch (IOException e) {
             CreatePopup("Error", "An error occurred while navigating to the page", Alert.AlertType.ERROR, true,
@@ -75,7 +100,6 @@ public class Router {
         }
         return false;
     }
-
 
     public boolean navigateBack() {
         if (history.size() > 1) {
@@ -106,5 +130,13 @@ public class Router {
             }
         });
     }
-}
 
+    public boolean CreateCONFIRMATION(String title, String message, String content) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(message);
+        alert.setContentText(content);
+        Optional<ButtonType> result = alert.showAndWait();
+        return result.isPresent() && result.get() == ButtonType.OK;
+    }
+}

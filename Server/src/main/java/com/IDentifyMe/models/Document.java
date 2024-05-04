@@ -1,12 +1,46 @@
 package com.IDentifyMe.models;
 
-import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-public class Document implements Serializable{
+import org.json.JSONObject;
+
+public class Document {
     private int documentID;
     private int requestID;
     private String documentType;
     private String documentPath;
+
+    public Document(int documentID, int requestID, String documentType, String documentPath) {
+        this.documentID = documentID;
+        this.requestID = requestID;
+        this.documentType = documentType;
+        this.documentPath = documentPath;
+    }
+
+    public Document(JSONObject json) {
+        this(
+                json.getInt("documentID"),
+                json.getInt("requestID"),
+                json.getString("documentType"),
+                json.getString("documentPath"));
+    }
+
+    public Document(ResultSet rs) throws SQLException {
+        this.documentID = rs.getInt("DocumentID");
+        this.requestID = rs.getInt("RequestID");
+        this.documentType = rs.getString("DocumentType");
+        this.documentPath = rs.getString("DocumentPath");
+    }
+
+    public JSONObject toJSON() {
+        JSONObject json = new JSONObject();
+        json.put("documentID", this.documentID);
+        json.put("requestID", this.requestID);
+        json.put("documentType", this.documentType);
+        json.put("documentPath", this.documentPath);
+        return json;
+    }
 
     public int getDocumentID() {
         return documentID;

@@ -1,14 +1,18 @@
 package org.IDentifyMe;
 
-import java.io.IOException;
 
 import org.IDentifyMe.Classes.Router;
 import atlantafx.base.theme.PrimerDark;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
@@ -25,17 +29,23 @@ public class MainApp extends Application {
         router.addRoute("login", "login.fxml");
         router.addRoute("studentDashboard", "StudentDashboard.fxml");
         router.addRoute("studentHome", "StudentHome.fxml");
+        router.addRoute("financeHome", "FinanceHome.fxml");
+        router.addRoute("ID_DepartmentHome", "ID_DepartmentHome.fxml");
 
         stage.setOnCloseRequest(e -> {
             e.consume();
-            router.CreatePopup("Exit", "Are you sure you want to exit?", null, true, null);
+            if(router.CreateCONFIRMATION("Exit", "Are you sure you want to exit?", null)){
+                System.exit(0);
+            }
         });
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/org/IDentifyMe/view/login.fxml"))));
-        } catch (IOException e1) {
+        } catch (Exception e1) {
+            e1.printStackTrace();
             System.out.println("Error loading login.fxml");
             System.exit(1);
         }
+        
         stage.getIcons().add(new Image(getClass().getResource("/org/IDentifyMe/icons/icon.png").toExternalForm()));
         stage.centerOnScreen();
         stage.setTitle(APP_NAME);

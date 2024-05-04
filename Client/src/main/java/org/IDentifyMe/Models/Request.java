@@ -1,11 +1,9 @@
 package org.IDentifyMe.Models;
 
-import java.io.Serializable;
 import java.util.Date;
-
 import org.json.JSONObject;
 
-public class Request implements Serializable{
+public class Request {
     private int requestId;
     private int studentId;
     private String requestType;

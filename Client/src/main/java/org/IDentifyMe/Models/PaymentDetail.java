@@ -1,10 +1,8 @@
 package org.IDentifyMe.Models;
 
-import java.io.Serializable;
-
 import org.json.JSONObject;
 
-public class PaymentDetail implements Serializable{
+public class PaymentDetail {
     private int paymentID;
     private int requestID;
     private double amount;

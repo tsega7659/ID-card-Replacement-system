@@ -13,6 +13,15 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderPane;
+
 import java.util.function.Function;
 import java.net.http.HttpResponse;
 
@@ -38,10 +47,19 @@ public class LoginController {
     private ChoiceBox<String> userChoise;
 
     @FXML
+    private BorderPane mainBody;
+
+    @FXML
     public void initialize() {
         this.userChoise.getItems().addAll(userChoises);
         this.userChoise.setValue(userChoises[0]);
         this.userChoise.styleProperty().set("-fx-text-fill: white;");
+        BackgroundImage backgroundImage = new BackgroundImage(
+                new Image(getClass().getResource("/org/IDentifyMe/image/loginBg.png").toExternalForm(), 800, 600, false,
+                        true),
+                BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
+                new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true));
+        mainBody.setBackground(new Background(backgroundImage));
     }
 
     private Function<HttpResponse<String>, String> validator = (response) -> {
@@ -49,9 +67,15 @@ public class LoginController {
             JSONObject json = new JSONObject(response.body());
             if (json.getString("status").toLowerCase().equals("successful")) {
                 MainApp.router.CreatePopup("Success", "Successful!",
-                        Alert.AlertType.CONFIRMATION, false, json.getString("message"));
+                        Alert.AlertType.INFORMATION, false, json.getString("message"));
                 Platform.runLater(() -> {
-                    MainApp.router.navigateTo("studentHome");
+                    if (MainApp.User.equals(userChoises[0])) {
+                        MainApp.router.navigateTo("studentHome");
+                    } else if (MainApp.User.equals(userChoises[1])) {
+                        MainApp.router.navigateTo("financeHome");
+                    } else if (MainApp.User.equals(userChoises[2])) {
+                        MainApp.router.navigateTo("ID_DepartmentHome");
+                    }
                 });
             }
         } else {
@@ -64,18 +88,15 @@ public class LoginController {
     @FXML
     private void login() {
         HttpClientHandler client = new HttpClientHandler();
-        Student student = new Student(username.getText(), password.getText());
+        MainApp.User = userChoise.getValue();
+        if (MainApp.User.equals(userChoises[0])) {
+            Student student = new Student(username.getText(), password.getText());
+            client.sendPostRequest("/student/login", validator, student.toJSON().toString());
+        } else if (MainApp.User.equals(userChoises[1])) {
 
-        client.sendPostRequest("/student/login", validator, student.toJSON().toString());
+        } else if (MainApp.User.equals(userChoises[2])) {
+
+        }
     }
 
-    @FXML
-    private void register() {
-        // Registration logic here...
-    }
-
-    @FXML
-    private void forgotPassword() {
-        // Forgot password logic here...
-    }
 }

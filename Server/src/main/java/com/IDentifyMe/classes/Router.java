@@ -26,6 +26,15 @@ public class Router extends RoutingHandler {
         this.get("/student/getInfo", StudentController::getInfo);
         this.post("/student/update", StudentController::update);
 
+        this.post("/finance/login", FinanceDepartmentController::login);
+        this.get("/finance/logout", FinanceDepartmentController::logout);
+        this.get("/finance/getInfo", FinanceDepartmentController::getInfo);
+        this.post("/finance/update", FinanceDepartmentController::update);
+
+        this.post("/ID_Department/login", IDReplacementDepartmentController::login);
+        this.get("/ID_Department/logout", IDReplacementDepartmentController::logout);
+        this.get("/ID_Department/getInfo", IDReplacementDepartmentController::getInfo);
+        this.post("/ID_Department/update", IDReplacementDepartmentController::update);
     }
 
     private void serveDynamicImage(HttpServerExchange exchange) throws IOException {

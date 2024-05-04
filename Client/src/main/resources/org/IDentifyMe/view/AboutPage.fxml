@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.icons525.Icons525View?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+
+<BorderPane prefHeight="619.0" prefWidth="947.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.IDentifyMe.Controller.AboutPageController">
+   <top>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane fx:id="headerBar" prefHeight="173.0" prefWidth="980.0">
+               <children>
+                  <HBox alignment="CENTER" layoutX="45.0" layoutY="40.0">
+                     <children>
+                        <FontAwesomeIconView fill="WHITE" glyphName="GG" size="70" wrappingWidth="92.57141876220703" />
+                        <VBox>
+                           <children>
+                              <Label style="-fx-text-fill: #070707;" text="IDentifyMe" textFill="#282727">
+                                 <font>
+                                    <Font name="System Bold" size="48.0" />
+                                 </font>
+                              </Label>
+                              <Label style="-fx-text-fill: #070707;" text="School Mangement " textFill="WHITE">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <AnchorPane layoutX="53.0" layoutY="44.0" />
+               </children>
+            </Pane>
+            <BorderPane prefHeight="37.0" prefWidth="947.0" style="-fx-background-color: -color-bg-subtle;">
+               <left>
+                  <HBox alignment="CENTER" prefHeight="36.0" prefWidth="296.0" spacing="15.0" BorderPane.alignment="CENTER" />
+               </left>
+               <center>
+                  <HBox alignment="CENTER" prefHeight="36.0" prefWidth="446.0" BorderPane.alignment="CENTER" />
+               </center>
+               <right>
+                  <HBox alignment="CENTER" prefHeight="36.0" prefWidth="320.0" spacing="15.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#previousPage" prefHeight="28.0" prefWidth="49.0" style="-fx-background-color: -color-bg-inset;">
+                           <graphic>
+                              <Icons525View fill="#2d75e8" glyphName="ARROW" size="20" />
+                           </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#reloadPage" prefHeight="28.0" prefWidth="49.0" style="-fx-background-color: -color-bg-inset;">
+                           <graphic>
+                              <FontAwesomeIconView fill="#2d75e8" glyphName="REFRESH" size="20" />
+                           </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#homePage" prefHeight="28.0" prefWidth="49.0" style="-fx-background-color: -color-bg-inset;">
+                           <graphic>
+                              <FontAwesomeIconView fill="#2d75e8" glyphName="HOME" size="20" />
+                           </graphic>
+                        </Button>
+                     </children></HBox>
+               </right>
+            </BorderPane>
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <center>
+            <WebView fx:id="webView" prefHeight="419.0" prefWidth="975.0" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </center>
+</BorderPane>

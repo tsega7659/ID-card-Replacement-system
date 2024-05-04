@@ -1,10 +1,11 @@
 package com.IDentifyMe.models;
 
-import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import org.json.JSONObject;
 
-public class PaymentDetail implements Serializable{
+public class PaymentDetail {
     private int paymentID;
     private int requestID;
     private double amount;
@@ -14,7 +15,8 @@ public class PaymentDetail implements Serializable{
     private String paymentVerificationDate;
     private String bankName;
 
-        public PaymentDetail(int paymentID, int requestID, double amount, String receiptNumber, String paymentDate, String status, String paymentVerificationDate, String bankName) {
+    public PaymentDetail(int paymentID, int requestID, double amount, String receiptNumber, String paymentDate,
+            String status, String paymentVerificationDate, String bankName) {
         this.paymentID = paymentID;
         this.requestID = requestID;
         this.amount = amount;
@@ -24,6 +26,7 @@ public class PaymentDetail implements Serializable{
         this.paymentVerificationDate = paymentVerificationDate;
         this.bankName = bankName;
     }
+
     public PaymentDetail() {
         this.paymentID = 0;
         this.requestID = 0;
@@ -34,18 +37,30 @@ public class PaymentDetail implements Serializable{
         this.paymentVerificationDate = "";
         this.bankName = "";
     }
-    public PaymentDetail(JSONObject json){
-        this(
-            json.getInt("paymentID"),
-            json.getInt("requestID"),
-            json.getDouble("amount"),
-            json.getString("receiptNumber"),
-            json.getString("paymentDate"),
-            json.getString("status"),
-            json.getString("paymentVerificationDate"),
-            json.getString("bankName")
-        );
+
+    public PaymentDetail(ResultSet rs) throws SQLException {
+        this.paymentID = rs.getInt("PaymentID");
+        this.requestID = rs.getInt("RequestID");
+        this.amount = rs.getDouble("Amount");
+        this.receiptNumber = rs.getString("DocumentPath");
+        this.paymentDate = rs.getString("PaymentDate");
+        this.status = rs.getString("status");
+        this.paymentVerificationDate = rs.getString("PaymentVerificationDate");
+        this.bankName = rs.getString("BankName");
     }
+
+    public PaymentDetail(JSONObject json) {
+        this(
+                json.getInt("paymentID"),
+                json.getInt("requestID"),
+                json.getDouble("amount"),
+                json.getString("receiptNumber"),
+                json.getString("paymentDate"),
+                json.getString("status"),
+                json.getString("paymentVerificationDate"),
+                json.getString("bankName"));
+    }
+
     public JSONObject toJSON() {
         JSONObject json = new JSONObject();
         json.put("paymentID", this.paymentID);
@@ -86,12 +101,15 @@ public class PaymentDetail implements Serializable{
     public String getReceiptNumber() {
         return receiptNumber;
     }
+
     public String getStatus() {
         return status;
     }
+
     public void setStatus(String stat) {
-        this.status=stat;
+        this.status = stat;
     }
+
     public void setReceiptNumber(String receiptNumber) {
         this.receiptNumber = receiptNumber;
     }

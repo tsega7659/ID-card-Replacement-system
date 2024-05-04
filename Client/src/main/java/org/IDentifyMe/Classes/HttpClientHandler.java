@@ -121,4 +121,7 @@ public class HttpClientHandler {
                     true, e.getMessage());
         }
     }
+    public static void clearCookie(){
+        cookie = "";
+    }
 }
