@@ -4,7 +4,7 @@
 The ID Card Replacement System aims to simplify the process of replacing lost or damaged ID cards for students at the Addis Ababa Science and Technology University (AASTU). This system streamlines administrative procedures, enhances efficiency, and improves the overall student experience.
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-## ![alt text](https://t4.ftcdn.net/jpg/04/09/86/45/360_F_409864514_22BSaAnubdKn2V979WmVIuoIXYXtM3XF.jpg)
+## ![alt text](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngwing.com%2Fen%2Ffree-png-ntwfc&psig=AOvVaw3VlVREPZcuc_FgRmcHBHYx&ust=1714875908913000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCJDP5JP58oUDFQAAAAAdAAAAABAE)
 
 ## Table of Contents
 - [Executive Summary](#executive-summary)
