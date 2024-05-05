@@ -15,6 +15,7 @@ public class StudentDashboardController implements Initializable {
 
     @FXML
     private TableView<Student> tbData;
+    
     @FXML
     public TableColumn<Student, Integer> studentId;
 

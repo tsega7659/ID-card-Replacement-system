@@ -8,7 +8,6 @@ module org.IDentifyMe {
     requires javafx.graphics;
 
     opens org.IDentifyMe.Controller to javafx.fxml;
-    exports org.IDentifyMe.Controller;
-    opens org.IDentifyMe to javafx.fxml;
-    exports org.IDentifyMe to javafx.graphics;
+    opens org.IDentifyMe to javafx.fxml, javafx.graphics, org.IDentifyMe.Classes;
+    opens org.IDentifyMe.Classes to javafx.graphics;
 }

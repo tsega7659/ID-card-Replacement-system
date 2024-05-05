@@ -2,8 +2,6 @@ package com.IDentifyMe;
 
 import com.IDentifyMe.classes.DatabaseManager;
 import com.IDentifyMe.classes.Router;
-import com.IDentifyMe.database.StudentsTable;
-
 import io.undertow.Undertow;
 import io.undertow.server.session.InMemorySessionManager;
 import io.undertow.server.session.SessionAttachmentHandler;
@@ -34,8 +32,7 @@ public class App {
     }
 
     public static void main(String[] args) {
-        DatabaseManager db = new StudentsTable();
-        System.out.println("Database connection successful");
+        DatabaseManager.testDatabaseConnection();
         App app = new App();
         app.start();
         System.out.println("Server running : http://" + HOST + ":" + PORT);

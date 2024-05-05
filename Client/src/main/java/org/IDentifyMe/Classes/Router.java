@@ -1,21 +1,26 @@
 package org.IDentifyMe.Classes;
 
-import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Stack;
+import java.util.function.Function;
+import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
-import org.IDentifyMe.MainApp;
-
-public class Router {
+public class Router implements Function<String, String> {
     private Stage stage;
     private Map<String, String> routes = new HashMap<>();
     private final String PATH = "/org/IDentifyMe/view/";
@@ -53,24 +58,6 @@ public class Router {
         return false;
     }
 
-    public boolean logout() {
-        Platform.runLater(() -> {
-            MainApp.router.CreatePopup("Success", "Successful!",
-                    Alert.AlertType.INFORMATION, false, "");
-            ;
-            try {
-                stage.setScene(new Scene(FXMLLoader.load(getClass().getResource(PATH + "login.fxml"))));
-            } catch (IOException e) {
-                e.printStackTrace();
-                CreatePopup("Error", "An error occurred while navigating to the page", Alert.AlertType.ERROR, true,
-                        e.getMessage());
-            }
-            MainApp.User = null;
-            HttpClientHandler.clearCookie();
-        });
-        return false;
-    }
-
     public boolean addViewTo(String name, Pane root) {
         try {
             if (!routes.containsKey(name)) {
@@ -85,6 +72,16 @@ public class Router {
         return false;
     }
 
+    public void start (){
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/org/IDentifyMe/view/login.fxml"))));
+        } catch (Exception e1) {
+            e1.printStackTrace();
+            System.out.println("Error loading login.fxml");
+            System.exit(1);
+        }
+    }
+    
     public boolean updateViewTo(String name, Pane root) {
         try {
             if (!routes.containsKey(name)) {
@@ -138,4 +135,24 @@ public class Router {
         Optional<ButtonType> result = alert.showAndWait();
         return result.isPresent() && result.get() == ButtonType.OK;
     }
+
+    @Override
+    public String apply(String arg0) {
+        if (arg0 != null) {
+            Platform.runLater(() -> {
+                this.navigateTo(arg0);
+            });
+        }
+        return null;
+    }
+
+    public void setBackground(String imageName, Pane bg) {
+        BackgroundImage backgroundImage = new BackgroundImage(
+                new Image(getClass().getResource("/org/IDentifyMe/image/" +imageName).toExternalForm(), 800, 600, false,
+                        true),
+                BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
+                new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true));
+        bg.setBackground(new Background(backgroundImage));
+    }
+
 }
