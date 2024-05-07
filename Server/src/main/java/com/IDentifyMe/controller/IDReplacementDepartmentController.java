@@ -2,10 +2,8 @@ package com.IDentifyMe.controller;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import com.IDentifyMe.database.StudentsTable;
-import com.IDentifyMe.models.Student;
-
+import com.IDentifyMe.database.IDReplacementDepartmentTable;
+import com.IDentifyMe.models.IDReplacementDepartment;
 import io.undertow.server.HttpServerExchange;
 import io.undertow.server.session.Session;
 import io.undertow.server.session.SessionConfig;
@@ -22,18 +20,18 @@ public class IDReplacementDepartmentController {
         exchange.getRequestReceiver().receiveFullString(((exc, message) -> {
             try {
                 String jsonString = new String(message);
-                Student stud = new Student(new JSONObject(jsonString));
+                IDReplacementDepartment fid = new IDReplacementDepartment(new JSONObject(jsonString));
 
-                if (stud == null || stud.getStudentID() == null || stud.getPassword() == null) {
-                    throw new IllegalArgumentException("Student object, student ID, or password is null");
+                if (fid == null || fid.getPassword() == null) {
+                    throw new IllegalArgumentException("IDReplacementDepartment object, student ID, or password is null");
                 }
                 
-                StudentsTable studT = new StudentsTable();
-                Student studC = studT.getStudent(stud);
+                IDReplacementDepartmentTable studT = new IDReplacementDepartmentTable();
+                IDReplacementDepartment fidC = studT.getIDReplacementDepartment(fid);
 
-                if (studC != null && studC.getPassword().equals(stud.getPassword())) {
+                if (fidC != null && fidC.getPassword().equals(fid.getPassword())) {
                     Session session = exchange.getAttachment(SessionManager.ATTACHMENT_KEY).createSession(exchange, exchange.getAttachment(SessionConfig.ATTACHMENT_KEY));
-                    session.setAttribute("user", studC);
+                    session.setAttribute("user", fidC);
                     sendResponse(exchange, 200, "successful", "Login successful");
                 } else {
                     sendResponse(exchange, 401, "failed", "Invalid username or password");
@@ -49,8 +47,8 @@ public class IDReplacementDepartmentController {
         }));
     }
     
-    private static Student getAttribute(Session session){
-        return (Student)session.getAttribute("user");
+    private static IDReplacementDepartment getAttribute(Session session){
+        return (IDReplacementDepartment)session.getAttribute("user");
     }
 
     private static Session getSession (HttpServerExchange exchange){
@@ -65,14 +63,14 @@ public class IDReplacementDepartmentController {
         exchange.getRequestReceiver().receiveFullString((exc, message) -> {
             try {
                 String jsonString = new String(message);
-                Student stud = new Student(new JSONObject(jsonString));
+                IDReplacementDepartment fid = new IDReplacementDepartment(new JSONObject(jsonString));
 
-                if (stud == null || !stud.validateAttributes()) {
-                    throw new IllegalArgumentException("Invalid Student object");
+                if (fid == null || !fid.validateAttributes()) {
+                    throw new IllegalArgumentException("Invalid IDReplacementDepartment object");
                 }
-                StudentsTable studT = new StudentsTable();
-                if (studT.updateStudent(stud, getAttribute(getSession(exchange)))) {
-                    getSession(exchange).setAttribute("user", stud);
+                IDReplacementDepartmentTable fidT = new IDReplacementDepartmentTable();
+                if (fidT.updateIDReplacementDepartment(fid, getAttribute(getSession(exchange)))) {
+                    getSession(exchange).setAttribute("user", fid);
                     sendResponse(exchange, 200, "successful", "Update successful");
                 } else {
                     sendResponse(exchange, 500, "failed", "Server error");
@@ -101,7 +99,7 @@ public class IDReplacementDepartmentController {
             sendResponse(exchange, 401, "falid", "login");
             return;
         }
-        Student student = getAttribute(getSession(exchange));
+        IDReplacementDepartment student = getAttribute(getSession(exchange));
         if (student != null) {
             exchange.getResponseSender().send(student.toJSON().toString());
         } else {

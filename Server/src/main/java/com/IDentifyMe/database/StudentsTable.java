@@ -77,12 +77,15 @@ public class StudentsTable extends DatabaseManager {
         }
         return false;
     }
-
-    public Boolean deleteStudent(Student student) {
+    public Boolean deleteStudent(Student studentID) {
+        return this.deleteStudent(studentID.getStudentID());
+    }
+    
+    public Boolean deleteStudent(String student) {
         String query = "DELETE FROM " + tableName + " WHERE StudentID = ?";
         try {
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, student.getStudentID());
+            statement.setString(1, student);
             int rowsDeleted = statement.executeUpdate();
             statement.close();
             return (rowsDeleted > 0) ? true : false;

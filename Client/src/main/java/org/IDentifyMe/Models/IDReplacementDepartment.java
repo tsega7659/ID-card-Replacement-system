@@ -15,6 +15,10 @@ public class IDReplacementDepartment {
         this.password = password;
     }
 
+    public IDReplacementDepartment(int employeeID, String password) {
+        this(employeeID, "", "", password);
+    }
+
     public IDReplacementDepartment(JSONObject json ){
         this(
             json.getInt("employeeID"),

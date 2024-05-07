@@ -16,14 +16,18 @@ public class FinanceDepartment {
         this.password = password;
     }
 
-    public FinanceDepartment(JSONObject json ){
-        this(
-            json.getInt("employeeID"),
-            json.getString("name"),
-            json.getString("email"),
-            json.getString("password")
-        );
+    public FinanceDepartment(int employeeID, String password) {
+        this(employeeID, "", "", password);
     }
+
+    public FinanceDepartment(JSONObject json) {
+        this(
+                json.getInt("employeeID"),
+                json.getString("name"),
+                json.getString("email"),
+                json.getString("password"));
+    }
+
     public JSONObject toJSON() {
         JSONObject json = new JSONObject();
         json.put("employeeID", this.employeeID);
@@ -64,7 +68,7 @@ public class FinanceDepartment {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     public boolean validateAttributes() {
         if (name == null || name.isEmpty()) {
             return false;

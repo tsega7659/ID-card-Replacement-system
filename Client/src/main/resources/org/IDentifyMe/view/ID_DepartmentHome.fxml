@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.icons525.Icons525View?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="619.0" prefWidth="947.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.IDentifyMe.Controller.ID_DepartmentHomeController">
+   <top>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane fx:id="headerBar" prefHeight="173.0" prefWidth="980.0">
+               <children>
+                  <HBox alignment="CENTER" layoutX="45.0" layoutY="40.0">
+                     <children>
+                        <FontAwesomeIconView fill="WHITE" glyphName="GG" size="70" wrappingWidth="92.57141876220703" />
+                        <VBox>
+                           <children>
+                              <Label style="-fx-text-fill: #070707;" text="IDentifyMe" textFill="#282727">
+                                 <font>
+                                    <Font name="System Bold" size="48.0" />
+                                 </font>
+                              </Label>
+                              <Label style="-fx-text-fill: #070707;" text="School Mangement " textFill="WHITE">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <AnchorPane layoutX="53.0" layoutY="44.0" />
+               </children>
+            </Pane>
+            <BorderPane prefHeight="37.0" prefWidth="947.0" style="-fx-background-color: -color-bg-subtle;">
+               <left>
+                  <HBox alignment="CENTER" prefHeight="36.0" prefWidth="296.0" spacing="15.0" BorderPane.alignment="CENTER" />
+               </left>
+               <center>
+                  <HBox alignment="CENTER" prefHeight="36.0" prefWidth="446.0" BorderPane.alignment="CENTER" />
+               </center>
+               <right>
+                  <HBox alignment="CENTER" prefHeight="36.0" prefWidth="320.0" spacing="15.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#previousPage" prefHeight="28.0" prefWidth="49.0" style="-fx-background-color: -color-bg-inset;">
+                           <graphic>
+                              <Icons525View fill="#2d75e8" glyphName="ARROW" size="20" />
+                           </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#reloadPage" prefHeight="28.0" prefWidth="49.0" style="-fx-background-color: -color-bg-inset;">
+                           <graphic>
+                              <FontAwesomeIconView fill="#2d75e8" glyphName="REFRESH" size="20" />
+                           </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#homePage" prefHeight="28.0" prefWidth="49.0" style="-fx-background-color: -color-bg-inset;">
+                           <graphic>
+                              <FontAwesomeIconView fill="#2d75e8" glyphName="HOME" size="20" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+               </right>
+            </BorderPane>
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <HBox alignment="CENTER" prefHeight="384.0" prefWidth="947.0" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane alignment="CENTER" hgap="10.0" prefHeight="383.0" prefWidth="750.0" vgap="10.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="197.0" minHeight="10.0" prefHeight="194.33334350585938" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="238.66665649414062" minHeight="10.0" prefHeight="214.66665649414062" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <VBox alignment="BOTTOM_CENTER">
+                     <children>
+                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="181.0" prefWidth="242.0" text="Dashboard">
+                           <graphic>
+                              <FontAwesomeIconView fill="#2d75e8" glyphName="PIE_CHART" size="50" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <VBox alignment="BOTTOM_CENTER" GridPane.columnIndex="1">
+                     <children>
+                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="181.0" prefWidth="242.0" text="New Request">
+                           <graphic>
+                              <Icons525View fill="#2d75e8" glyphName="CIRCLEADD" size="50" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <VBox alignment="BOTTOM_CENTER" GridPane.columnIndex="2">
+                     <children>
+                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="181.0" prefWidth="242.0" text="Notification">
+                           <graphic>
+                              <FontAwesomeIconView fill="#2d75e8" glyphName="BELL_ALT" size="50" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <children>
+                        <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#logout" prefHeight="181.0" prefWidth="242.0" text="Logout">
+                           <graphic>
+                              <Icons525View fill="#2d75e8" glyphName="LOGOUT" size="60" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#AboutPage" prefHeight="181.0" prefWidth="242.0" text="Help">
+                           <graphic>
+                              <FontAwesomeIconView fill="#2d75e8" glyphName="QUESTION_CIRCLE_ALT" size="60" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" GridPane.rowIndex="1">
+                     <children>
+                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="181.0" prefWidth="242.0" text="Profile">
+                           <graphic>
+                              <FontAwesomeIconView fill="#2d75e8" glyphName="USER_CIRCLE_ALT" size="60" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </GridPane>
+         </children>
+      </HBox>
+   </center>
+</BorderPane>

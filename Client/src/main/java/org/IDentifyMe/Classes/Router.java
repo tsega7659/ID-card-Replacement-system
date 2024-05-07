@@ -31,11 +31,11 @@ public class Router implements Function<String, String> {
         this.history = new Stack<>();
 
         this.addRoute("login", "login.fxml");
+        this.addRoute("about", "AboutPage.fxml");
         this.addRoute("studentDashboard", "StudentDashboard.fxml");
         this.addRoute("studentHome", "StudentHome.fxml");
         this.addRoute("financeHome", "FinanceHome.fxml");
         this.addRoute("ID_DepartmentHome", "ID_DepartmentHome.fxml");
-        this.addRoute("about", "AboutPage.fxml");
     }
 
     public void addRoute(String name, String fxmlFile) {
@@ -72,7 +72,7 @@ public class Router implements Function<String, String> {
         return false;
     }
 
-    public void start (){
+    public void start() {
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/org/IDentifyMe/view/login.fxml"))));
         } catch (Exception e1) {
@@ -81,7 +81,7 @@ public class Router implements Function<String, String> {
             System.exit(1);
         }
     }
-    
+
     public boolean updateViewTo(String name, Pane root) {
         try {
             if (!routes.containsKey(name)) {
@@ -98,7 +98,7 @@ public class Router implements Function<String, String> {
     }
 
     public boolean navigateBack() {
-        if (history.size() > 1) {
+        if (history.size() > 1 && !history.peek().equals("login")) {
             history.pop();
             System.out.println(history.peek());
             return navigateTo(history.peek());
@@ -148,7 +148,8 @@ public class Router implements Function<String, String> {
 
     public void setBackground(String imageName, Pane bg) {
         BackgroundImage backgroundImage = new BackgroundImage(
-                new Image(getClass().getResource("/org/IDentifyMe/image/" +imageName).toExternalForm(), 800, 600, false,
+                new Image(getClass().getResource("/org/IDentifyMe/image/" + imageName).toExternalForm(), 800, 600,
+                        false,
                         true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
                 new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true));
