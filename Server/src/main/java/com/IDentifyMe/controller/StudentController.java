@@ -2,7 +2,6 @@ package com.IDentifyMe.controller;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import com.IDentifyMe.database.StudentsTable;
 import com.IDentifyMe.models.Student;
 import io.undertow.server.HttpServerExchange;
@@ -88,7 +87,7 @@ public class StudentController {
     }
 
     public static void logout(HttpServerExchange exchange) {
-        if (getSession(exchange) != null || getAttribute(getSession(exchange)) != null) {
+        if (getSession(exchange) != null && getAttribute(getSession(exchange)) != null) {
             getSession(exchange).invalidate(exchange);
             sendResponse(exchange, 200, "successful", "Logout successful");
         } else {

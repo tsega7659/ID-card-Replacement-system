@@ -99,18 +99,18 @@
                   </VBox>
                   <VBox alignment="BOTTOM_CENTER" GridPane.columnIndex="1">
                      <children>
-                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="181.0" prefWidth="242.0" text="New Request">
+                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="181.0" prefWidth="242.0" text="Request">
                            <graphic>
-                              <Icons525View fill="#2d75e8" glyphName="CIRCLEADD" size="50" />
+                              <Icons525View fill="#2d75e8" glyphName="EDIT" size="50" />
                            </graphic>
                         </Button>
                      </children>
                   </VBox>
                   <VBox alignment="BOTTOM_CENTER" GridPane.columnIndex="2">
                      <children>
-                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="181.0" prefWidth="242.0" text="Notification">
+                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="181.0" prefWidth="242.0" text="Finance">
                            <graphic>
-                              <FontAwesomeIconView fill="#2d75e8" glyphName="BELL_ALT" size="50" />
+                              <FontAwesomeIconView fill="#2d75e8" glyphName="BANK" size="50" />
                            </graphic>
                         </Button>
                      </children>

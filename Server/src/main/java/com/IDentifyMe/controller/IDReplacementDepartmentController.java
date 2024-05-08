@@ -86,7 +86,7 @@ public class IDReplacementDepartmentController {
     }
 
     public static void logout(HttpServerExchange exchange) {
-        if (getSession(exchange) != null || getAttribute(getSession(exchange)) != null) {
+        if (getSession(exchange) != null && getAttribute(getSession(exchange)) != null) {
             getSession(exchange).invalidate(exchange);
             sendResponse(exchange, 200, "successful", "Logout successful");
         } else {
