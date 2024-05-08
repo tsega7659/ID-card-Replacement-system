@@ -43,7 +43,6 @@ public class LoginController {
     public void initialize() {
         MainApp.User = null;
         this.userChoise.getItems().addAll(userChoises);
-        this.userChoise.setValue(userChoises[0]);
         this.userChoise.styleProperty().set("-fx-text-fill: white;");
         MainApp.router.setBackground("loginBg.png", mainBody);
         HttpClientHandler.clearCookie();
