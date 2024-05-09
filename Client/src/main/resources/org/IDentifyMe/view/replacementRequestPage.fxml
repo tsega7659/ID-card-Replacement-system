@@ -4,7 +4,14 @@
 <?import de.jensd.fx.glyphs.icons525.Icons525View?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -44,7 +51,7 @@
                <left>
                   <HBox alignment="CENTER" prefHeight="36.0" prefWidth="296.0" spacing="15.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label alignment="CENTER" prefHeight="66.0" prefWidth="175.0" style="-fx-text-fill: #2d75e8;" text="Request">
+                        <Label alignment="CENTER" prefHeight="66.0" prefWidth="175.0" style="-fx-text-fill: #2d75e8;" text="Renewal Request">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -80,56 +87,222 @@
       </VBox>
    </top>
    <center>
-      <HBox alignment="CENTER" maxWidth="-Infinity" prefHeight="384.0" prefWidth="500.0" BorderPane.alignment="CENTER">
-         <children>
-            <VBox alignment="TOP_CENTER" prefHeight="362.0" prefWidth="432.0" spacing="20.0" HBox.hgrow="ALWAYS">
-               <children>
-                  <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="115.0" prefWidth="432.0" style="-fx-border-color: #2d75e8; -fx-border-width: 2px; -fx-border-radius: 13px;">
-                     <left>
-                        <HBox alignment="CENTER" prefHeight="199.0" prefWidth="103.0" BorderPane.alignment="CENTER">
-                           <children>
-                              <FontAwesomeIconView fill="#2d75e8" glyphName="ANGLE_RIGHT" size="50" />
-                           </children>
-                        </HBox>
-                     </left>
+      <TabPane prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/tabpane.css" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="ID form">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <center>
-                        <HBox prefHeight="199.0" prefWidth="280.0" BorderPane.alignment="CENTER">
+                        <HBox alignment="CENTER" prefHeight="419.0" prefWidth="722.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Label prefHeight="133.0" prefWidth="354.0" text="ID Card Renewal">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
+                              <VBox prefHeight="389.0" prefWidth="524.0" spacing="5.0" style="-fx-border-color: #2d75e8; -fx-border-radius: 5px; -fx-border-radius: 10px;">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="63.0" prefWidth="522.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <FontAwesomeIconView fill="#2d75e8" glyphName="ID_CARD_ALT" size="30" text="" />
+                                          <Label alignment="CENTER" prefHeight="62.0" prefWidth="175.0" text="ID Form">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <BorderPane prefHeight="267.0" prefWidth="522.0" VBox.vgrow="ALWAYS">
+                                       <center>
+                                          <VBox alignment="CENTER" prefHeight="152.0" prefWidth="241.0" spacing="10.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Label alignment="CENTER" prefHeight="21.0" prefWidth="257.0" text="Upload AASTU department" VBox.vgrow="ALWAYS">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Label>
+                                                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="204.0" text="Choose" VBox.vgrow="ALWAYS">
+                                                   <graphic>
+                                                      <FontAwesomeIconView fill="#2d75e8" glyphName="FOLDER_OPEN" size="26" />
+                                                   </graphic>
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                </Button>
+                                             </children>
+                                          </VBox>
+                                       </center>
+                                       <left>
+                                          <ImageView fitHeight="161.0" fitWidth="181.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+                                             <image>
+                                                <Image url="@../image/no-image.png" />
+                                             </image>
+                                          </ImageView>
+                                       </left>
+                                    </BorderPane>
+                                    <BorderPane layoutX="31.0" layoutY="103.0" prefHeight="144.0" prefWidth="482.0">
+                                       <center>
+                                          <VBox alignment="CENTER" prefHeight="220.0" prefWidth="261.0" spacing="10.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Label alignment="CENTER" prefHeight="21.0" prefWidth="293.0" text="Upload police station document " VBox.vgrow="ALWAYS">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Label>
+                                                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="204.0" text="Choose" VBox.vgrow="ALWAYS">
+                                                   <graphic>
+                                                      <FontAwesomeIconView fill="#2d75e8" glyphName="FOLDER_OPEN" size="26" />
+                                                   </graphic>
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Button contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="46.0" prefWidth="205.0" style="-fx-background-color: #2d75e8; -fx-text-fill: black;" text="Next">
+                                                   <graphic>
+                                                      <FontAwesomeIconView glyphName="ANGLE_DOUBLE_RIGHT" size="30" />
+                                                   </graphic>
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </Button>
+                                             </children>
+                                          </VBox>
+                                       </center>
+                                       <left>
+                                          <ImageView fitHeight="145.0" fitWidth="182.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+                                             <image>
+                                                <Image url="@../image/no-image.png" />
+                                             </image>
+                                          </ImageView>
+                                       </left>
+                                    </BorderPane>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="15.0" left="20.0" right="20.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="15.0" top="15.0" />
+                           </padding>
+                        </HBox>
+                     </center>
+                  </BorderPane>
+               </content>
+          </Tab>
+          <Tab text="finance form">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <center>
+                        <HBox alignment="CENTER" prefHeight="419.0" prefWidth="722.0" BorderPane.alignment="CENTER">
+                           <padding>
+                              <Insets bottom="15.0" top="15.0" />
+                           </padding>
+                           <children>
+                              <VBox prefHeight="389.0" prefWidth="524.0" spacing="5.0" style="-fx-border-color: #2d75e8; -fx-border-radius: 5px; -fx-border-radius: 10px;">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="63.0" prefWidth="522.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <FontAwesomeIconView fill="#2d75e8" glyphName="CREDIT_CARD" size="30" />
+                                          <Label alignment="CENTER" prefHeight="62.0" prefWidth="232.0" text="Receipt Form">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <BorderPane prefHeight="50.0" prefWidth="482.0" VBox.vgrow="ALWAYS">
+                                       <left>
+                                          <HBox alignment="CENTER" prefHeight="50.0" prefWidth="182.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Label prefHeight="21.0" prefWidth="148.0" text="Receipt Number">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                       </left>
+                                       <center>
+                                          <TextField prefHeight="34.0" prefWidth="257.0" BorderPane.alignment="CENTER" />
+                                       </center>
+                                    </BorderPane>
+                                    <HBox alignment="CENTER" prefHeight="44.0" prefWidth="511.0" spacing="15.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <Label prefHeight="21.0" prefWidth="159.0" text="Payment Method">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <CheckBox mnemonicParsing="false" prefHeight="20.0" prefWidth="138.0" text="Credit Card">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Bank Transfer">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </CheckBox>
+                                       </children>
+                                    </HBox>
+                                    <BorderPane layoutX="31.0" layoutY="187.0" prefHeight="50.0" prefWidth="482.0" VBox.vgrow="ALWAYS">
+                                       <left>
+                                          <HBox alignment="CENTER" prefHeight="50.0" prefWidth="182.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Label prefHeight="21.0" prefWidth="130.0" text="Payment Date">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                       </left>
+                                       <center>
+                                          <DatePicker prefHeight="34.0" prefWidth="359.0" BorderPane.alignment="CENTER" />
+                                       </center>
+                                    </BorderPane>
+                                    <BorderPane layoutX="31.0" layoutY="159.0" prefHeight="50.0" prefWidth="482.0" VBox.vgrow="ALWAYS">
+                                       <left>
+                                          <HBox alignment="CENTER" prefHeight="50.0" prefWidth="182.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Label prefWidth="109.0" text="Bank Name">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                       </left>
+                                       <center>
+                                          <TextField prefHeight="34.0" prefWidth="270.0" BorderPane.alignment="CENTER" />
+                                       </center>
+                                    </BorderPane>
+                                    <HBox alignment="CENTER" prefHeight="34.0" prefWidth="482.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="205.0" style="-fx-background-color: #2d75e8; -fx-text-fill: black;" text="Submitte">
+                                             <graphic>
+                                                <FontAwesomeIconView glyphName="CHECK_SQUARE_ALT" size="30" />
+                                             </graphic>
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="20.0" right="20.0" />
+                                 </padding>
+                              </VBox>
                            </children>
                         </HBox>
                      </center>
                   </BorderPane>
-                  <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="115.0" prefWidth="432.0" style="-fx-border-color: #2d75e8; -fx-border-width: 2px; -fx-border-radius: 13px;">
-                     <left>
-                        <HBox alignment="CENTER" prefHeight="199.0" prefWidth="103.0" BorderPane.alignment="CENTER">
-                           <children>
-                              <FontAwesomeIconView fill="#2d75e8" glyphName="ANGLE_RIGHT" size="50" />
-                           </children>
-                        </HBox>
-                     </left>
-                     <center>
-                        <HBox prefHeight="199.0" prefWidth="280.0" BorderPane.alignment="CENTER">
-                           <children>
-                              <Label prefHeight="133.0" prefWidth="354.0" text="ID card replacement">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                     </center>
-                  </BorderPane>
-               </children>
-               <padding>
-                  <Insets top="40.0" />
-               </padding>
-            </VBox>
-         </children>
-      </HBox>
+               </content>
+          </Tab>
+        </tabs>
+      </TabPane>
    </center>
 </BorderPane>
