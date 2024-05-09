@@ -1,0 +1,6 @@
+.tab-pane .tab-header-area {
+    -fx-opacity: 0; /* Hide the tab header area */
+    -fx-pref-height: 0; /* Set height to 0 */
+    -fx-min-height: 0; /* Set minimum height to 0 */
+    -fx-max-height: 0; /* Set maximum height to 0 */
+}
