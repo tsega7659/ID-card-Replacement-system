@@ -62,8 +62,10 @@ public class LoginController {
             } else if (MainApp.User.equals(userChoises[2])) {
                 IDReplacementDepartment id = new IDReplacementDepartment(Integer.parseInt(username.getText()), password.getText());
                 client.sendPostRequest("/"+MainApp.User+"/login", validatorFuctory.createValidator(MainApp.User+"Home"), id.toJSON().toString());
+            } else {
+                MainApp.router.CreatePopup("Error", "Invalid input", Alert.AlertType.ERROR, true, "Invalid input");
             }
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             MainApp.router.CreatePopup("Error", "Invalid input", Alert.AlertType.ERROR,
                     true, e.getMessage());
         }

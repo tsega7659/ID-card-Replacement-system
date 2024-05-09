@@ -44,7 +44,14 @@
             </Pane>
             <BorderPane prefHeight="37.0" prefWidth="947.0" style="-fx-background-color: -color-bg-subtle;">
                <left>
-                  <HBox alignment="CENTER" prefHeight="36.0" prefWidth="296.0" spacing="15.0" BorderPane.alignment="CENTER" />
+                  <HBox alignment="CENTER" prefHeight="36.0" prefWidth="296.0" spacing="15.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="143.0" style="-fx-text-fill: #2d75e8;" text="Home">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children></HBox>
                </left>
                <center>
                   <HBox alignment="CENTER" prefHeight="36.0" prefWidth="446.0" BorderPane.alignment="CENTER" />
