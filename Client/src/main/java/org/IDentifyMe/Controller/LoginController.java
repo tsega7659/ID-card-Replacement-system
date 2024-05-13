@@ -67,7 +67,7 @@ public class LoginController {
             }
         } catch (Exception e) {
             MainApp.router.CreatePopup("Error", "Invalid input", Alert.AlertType.ERROR,
-                    true, e.getMessage());
+                    true, "Invalid input");
         }
     }
 

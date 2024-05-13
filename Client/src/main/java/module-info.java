@@ -6,6 +6,8 @@ module org.IDentifyMe {
     requires org.json;
     requires javafx.web;
     requires javafx.graphics;
+    requires com.calendarfx.view;  
+
 
     opens org.IDentifyMe.Controller to javafx.fxml;
     opens org.IDentifyMe to javafx.fxml, javafx.graphics, org.IDentifyMe.Classes;

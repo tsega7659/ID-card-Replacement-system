@@ -32,10 +32,19 @@ public class Router implements Function<String, String> {
 
         this.addRoute("login", "login.fxml");
         this.addRoute("about", "AboutPage.fxml");
-        this.addRoute("studentDashboard", "StudentDashboard.fxml");
+
         this.addRoute("studentHome", "StudentHome.fxml");
+        this.addRoute("studentDashboard", "StudentDashboard.fxml");
+        this.addRoute("studentProfile", "StudentProfile.fxml");
+
         this.addRoute("financeHome", "FinanceHome.fxml");
+        this.addRoute("financeDashboard", "FinanceDashboard.fxml");
+        this.addRoute("financeProfile", "FinanceProfile.fxml");
+
         this.addRoute("ID_DepartmentHome", "ID_DepartmentHome.fxml");
+        this.addRoute("ID_DepartmentDashboard", "ID_DepartmentDashboard.fxml");
+        this.addRoute("ID_DepartmentProfile", "ID_DepartmentProfile.fxml");
+        this.addRoute("calendar", "CalendarPage.fxml");
     }
 
     public void addRoute(String name, String fxmlFile) {

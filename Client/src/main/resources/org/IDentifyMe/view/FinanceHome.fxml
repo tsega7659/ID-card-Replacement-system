@@ -97,7 +97,7 @@
                <children>
                   <VBox alignment="BOTTOM_CENTER">
                      <children>
-                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="181.0" prefWidth="242.0" text="Dashboard">
+                        <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#dashboardPage" prefHeight="181.0" prefWidth="242.0" text="Dashboard">
                            <graphic>
                               <FontAwesomeIconView fill="#2d75e8" glyphName="PIE_CHART" size="50" />
                            </graphic>

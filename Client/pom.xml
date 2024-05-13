@@ -18,10 +18,17 @@
     </properties>
 
     <organization>
-       <name>IDentifyMe</name>
+        <name>IDentifyMe</name>
     </organization>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.calendarfx</groupId>
+            <artifactId>view</artifactId>
+            <version>11.12.7</version>
+        </dependency>
+
 
         <dependency>
             <groupId>de.jensd</groupId>
