@@ -11,11 +11,9 @@ The ID Card Replacement System aims to simplify the process of replacing lost or
 - [Objectives](#objectives)
 - [Scope](#scope)
 - [Features](#features)
-- [User Interfaces](#user-interfaces)
 - [Project Structure](#project-structure)
 - [Resources Required](#resources-required)
 - [Installation](#installation)
-- [Usage](#usage)
 - [Credits](#credits)
 
 ## Introduction
@@ -36,25 +34,6 @@ The project will involve the design, development, and implementation of an ID Ca
 - Financial Approval: The finance department can review and approve requests based on provided banking information.
 - ID Replacement Management: The ID replacement department can manage approved requests and schedule appointments for students to collect their new ID cards.
 
-## User Interfaces
-### Student Interface
-- Students can log in using their credentials.
-- Select request type: ID card renewal or replacement.
-- Upload required documents.
-- Make payment of 250 ETB.
-
-### Finance Department Interface
-- Log in with department credentials.
-- View pending requests.
-- Verify banking information.
-- Approve or deny requests.
-
-### ID Replacement Department Interface
-- Log in with department credentials.
-- Review approved requests.
-- Verify submitted documents.
-- Approve requests and set appointment dates.
-
 ## Project Structure
 - JavaFX for User Interface: Building rich client applications.
 - Undertow for Server: High-performance web server with support for both blocking and non-blocking I/O.
@@ -65,14 +44,9 @@ The project will involve the design, development, and implementation of an ID Ca
 - Development team: Java developers, UI/UX designers, database administrators
 - Hardware: Servers for hosting the application
 - Software: JavaFX, Undertow, MySQL
-- Budget for development, testing, and deployment
-- Stakeholder engagement and training resources
 
 ## Installation
 Provide step-by-step installation instructions.
-
-## Usage
-Explain how to use your project, including interfaces for students, the finance department, and the ID replacement department.
 
 ## Credits
 Acknowledgements for individuals or projects that contributed to the project.
