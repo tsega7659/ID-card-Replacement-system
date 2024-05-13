@@ -6,12 +6,7 @@ import java.time.LocalTime;
 import java.time.temporal.WeekFields;
 import java.util.Locale;
 import java.util.ResourceBundle;
-
 import org.IDentifyMe.MainApp;
-
-import com.calendarfx.model.Calendar;
-import com.calendarfx.model.Calendar.Style;
-import com.calendarfx.model.CalendarSource;
 import com.calendarfx.view.CalendarView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
