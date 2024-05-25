@@ -13,6 +13,7 @@ public class Request {
     private Date requestDate;
     private String status;
     private Date appointmentDate;
+    private String reason;
 
     public Request(int requestId, int studentId, String requestType, Date requestDate, String status,
             Date appointmentDate) {
@@ -101,5 +102,14 @@ public class Request {
     public void setAppointmentDate(Date appointmentDate) {
         this.appointmentDate = appointmentDate;
     }
+
+    public String getReason() {
+        return this.reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+    
 
 }

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="619.0" prefWidth="947.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.IDentifyMe.Controller.StudentHomeController">
+<BorderPane prefHeight="619.0" prefWidth="947.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.IDentifyMe.Controller.profileController">
    <top>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -113,7 +113,7 @@
                               </HBox>
                            </left>
                            <center>
-                              <TextField prefHeight="34.0" prefWidth="257.0" stylesheets="@../css/inputfiled.css" BorderPane.alignment="CENTER" />
+                              <TextField fx:id="idLable" disable="true" editable="false" prefHeight="34.0" prefWidth="257.0" stylesheets="@../css/inputfiled.css" BorderPane.alignment="CENTER" />
                            </center>
                         </BorderPane>
                         <BorderPane layoutX="31.0" layoutY="187.0" prefHeight="50.0" prefWidth="482.0" VBox.vgrow="ALWAYS">
@@ -129,7 +129,7 @@
                               </HBox>
                            </left>
                            <center>
-                              <TextField stylesheets="@../css/inputfiled.css" BorderPane.alignment="CENTER" />
+                              <TextField fx:id="nameLable" stylesheets="@../css/inputfiled.css" BorderPane.alignment="CENTER" />
                            </center>
                         </BorderPane>
                         <BorderPane layoutX="31.0" layoutY="159.0" prefHeight="50.0" prefWidth="482.0" VBox.vgrow="ALWAYS">
@@ -145,7 +145,7 @@
                               </HBox>
                            </left>
                            <center>
-                              <TextField prefHeight="34.0" prefWidth="270.0" stylesheets="@../css/inputfiled.css" BorderPane.alignment="CENTER" />
+                              <TextField fx:id="emailLable" prefHeight="34.0" prefWidth="270.0" stylesheets="@../css/inputfiled.css" BorderPane.alignment="CENTER" />
                            </center>
                         </BorderPane>
                         <BorderPane layoutX="31.0" layoutY="252.0" prefHeight="50.0" prefWidth="482.0">
@@ -161,12 +161,12 @@
                               </HBox>
                            </left>
                            <center>
-                              <TextField prefHeight="34.0" prefWidth="270.0" stylesheets="@../css/inputfiled.css" BorderPane.alignment="CENTER" />
+                              <TextField fx:id="passwordLable" prefHeight="34.0" prefWidth="270.0" stylesheets="@../css/inputfiled.css" BorderPane.alignment="CENTER" />
                            </center>
                         </BorderPane>
                         <HBox alignment="CENTER" prefHeight="34.0" prefWidth="482.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="205.0" style="-fx-background-color: #2d75e8; -fx-text-fill: black;" text="SAVE">
+                              <Button mnemonicParsing="false" onAction="#updateAccount" prefHeight="46.0" prefWidth="205.0" style="-fx-background-color: #2d75e8; -fx-text-fill: black;" text="SAVE">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="SAVE" size="20" />
                                  </graphic>

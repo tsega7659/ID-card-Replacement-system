@@ -137,4 +137,6 @@ public class PaymentDetail {
     public void setBankName(String bankName) {
         this.bankName = bankName;
     }
+
+    
 }

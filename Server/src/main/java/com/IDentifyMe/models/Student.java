@@ -69,7 +69,7 @@ public class Student {
         this.Password = Password;
     }
     public boolean validateAttributes() {
-        if (StudentID == null || StudentID.isEmpty() || !StudentID.matches("[a-zA-Z]{3}[0-9]{4}/[0-9]{2}")) {
+        if (StudentID == null || StudentID.isEmpty()) {
             return false;
         }
         if (Name == null || Name.isEmpty()) {
@@ -78,7 +78,7 @@ public class Student {
         if (Email == null || Email.isEmpty() || !Email.matches("[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+")) {
             return false;
         }
-        if (Password == null || Password.isEmpty() || Password.length() < 8) {
+        if (Password == null || Password.isEmpty() || Password.length() < 5) {
             return false;
         }
         return true;

@@ -35,7 +35,12 @@ public class Router implements Function<String, String> {
 
         this.addRoute("studentHome", "StudentHome.fxml");
         this.addRoute("studentDashboard", "StudentDashboard.fxml");
-        this.addRoute("studentProfile", "StudentProfile.fxml");
+        this.addRoute("studentProfile", "ProfilePage.fxml");
+        this.addRoute("studentNewRequest", "requestFirstPage.fxml");
+        this.addRoute("studentRequestStatus", "requestStatusPage.fxml");
+        this.addRoute("studentRenewalRequest", "renewalRequestPage.fxml");
+        this.addRoute("studentreplacementRequest", "replacementRequestPage.fxml");
+
 
         this.addRoute("financeHome", "FinanceHome.fxml");
         this.addRoute("financeDashboard", "FinanceDashboard.fxml");
@@ -60,6 +65,10 @@ public class Router implements Function<String, String> {
             history.push(name);
             return true;
         } catch (IOException e) {
+            e.printStackTrace();
+            CreatePopup("Error", "An error occurred while navigating to the page", Alert.AlertType.ERROR, true,
+                    e.getMessage());
+        } catch (Exception e) {
             e.printStackTrace();
             CreatePopup("Error", "An error occurred while navigating to the page", Alert.AlertType.ERROR, true,
                     e.getMessage());

@@ -10,6 +10,7 @@ import java.util.function.Function;
 import javafx.scene.control.Alert;
 
 import org.IDentifyMe.MainApp;
+import org.json.JSONObject;
 
 public class HttpClientHandler {
     private HttpClient client = HttpClient.newBuilder().build();
@@ -36,6 +37,36 @@ public class HttpClientHandler {
             MainApp.router.CreatePopup("Error", "An error occurred while sending the request", Alert.AlertType.ERROR,
                     true, e.getMessage());
         }
+    }
+
+    public String sendGetRequest(String url) {
+        try {
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(new URI(BASE_URL + url))
+                    .GET()
+                    .header("Accept", "*/*")
+                    .header("Content-Type", "application/json")
+                    .header("Cookie", cookie)
+                    .build();
+            JSONObject json = new JSONObject(client.send(request, HttpResponse.BodyHandlers.ofString()).body());
+            if (json.getString("status").toLowerCase().equals("successful")) {
+                return json.getString("message");
+            } else {
+                MainApp.router.navigateBack();
+                MainApp.router.CreatePopup("Error", "An error occurred while sending the request", Alert.AlertType.ERROR,
+                        true, json.getString("message"));
+                
+            }
+        } catch (URISyntaxException e) {
+            MainApp.router.navigateBack();
+            MainApp.router.CreatePopup("Error", "An error occurred while sending the request", Alert.AlertType.ERROR,
+                    true, e.getMessage());
+        } catch (Exception e) {
+            MainApp.router.navigateBack();
+            MainApp.router.CreatePopup("Error", "An error occurred while sending the request", Alert.AlertType.ERROR,
+                    true, e.getMessage());
+        }
+        return null;
     }
 
     private HttpResponse<String> getCookie(HttpResponse<String> response) {

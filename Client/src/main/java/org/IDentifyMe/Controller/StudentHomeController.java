@@ -51,4 +51,21 @@ public class StudentHomeController implements Initializable {
     private void dashboardPage() {
         MainApp.router.navigateTo(MainApp.User+"Dashboard");
     }
+
+    @FXML
+    private void profilePage() {
+        MainApp.router.navigateTo(MainApp.User+"Profile");
+    }
+
+    @FXML
+    private void newRequestPage() {
+        MainApp.router.navigateTo("studentNewRequest");
+    }
+
+    @FXML
+    private void viewRequestPage() {
+        MainApp.router.navigateTo("studentRequestStatus");
+    }
+
+
 }

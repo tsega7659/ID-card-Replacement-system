@@ -20,18 +20,18 @@ public class StudentController {
 
         exchange.getRequestReceiver().receiveFullString(((exc, message) -> {
             try {
-                String jsonString = new String(message);
-                Student stud = new Student(new JSONObject(jsonString));
+                Student stud = new Student(new JSONObject(message));
 
                 if (stud == null || stud.getStudentID() == null || stud.getPassword() == null) {
                     throw new IllegalArgumentException("Student object, student ID, or password is null");
                 }
-                
+
                 StudentsTable studT = new StudentsTable();
                 Student studC = studT.getStudent(stud);
 
                 if (studC != null && studC.getPassword().equals(stud.getPassword())) {
-                    Session session = exchange.getAttachment(SessionManager.ATTACHMENT_KEY).createSession(exchange, exchange.getAttachment(SessionConfig.ATTACHMENT_KEY));
+                    Session session = exchange.getAttachment(SessionManager.ATTACHMENT_KEY).createSession(exchange,
+                            exchange.getAttachment(SessionConfig.ATTACHMENT_KEY));
                     session.setAttribute("user", studC);
                     sendResponse(exchange, 200, "successful", "Login successful");
                 } else {
@@ -47,13 +47,14 @@ public class StudentController {
             }
         }));
     }
-    
-    private static Student getAttribute(Session session){
-        return (Student)session.getAttribute("user");
+
+    private static Student getAttribute(Session session) {
+        return (Student) session.getAttribute("user");
     }
 
-    private static Session getSession (HttpServerExchange exchange){
-        return exchange.getAttachment(SessionManager.ATTACHMENT_KEY).getSession(exchange, exchange.getAttachment(SessionConfig.ATTACHMENT_KEY));
+    private static Session getSession(HttpServerExchange exchange) {
+        return exchange.getAttachment(SessionManager.ATTACHMENT_KEY).getSession(exchange,
+                exchange.getAttachment(SessionConfig.ATTACHMENT_KEY));
     }
 
     public static void update(HttpServerExchange exchange) {
@@ -63,8 +64,7 @@ public class StudentController {
         }
         exchange.getRequestReceiver().receiveFullString((exc, message) -> {
             try {
-                String jsonString = new String(message);
-                Student stud = new Student(new JSONObject(jsonString));
+                Student stud = new Student(new JSONObject(message));
 
                 if (stud == null || !stud.validateAttributes()) {
                     throw new IllegalArgumentException("Invalid Student object");
@@ -102,7 +102,7 @@ public class StudentController {
         }
         Student student = getAttribute(getSession(exchange));
         if (student != null) {
-            exchange.getResponseSender().send(student.toJSON().toString());
+            sendResponse(exchange, 200, "successful", student.toJSON().toString());
         } else {
             getSession(exchange).invalidate(exchange);
             sendResponse(exchange, 401, "falid", "No student information in session");
