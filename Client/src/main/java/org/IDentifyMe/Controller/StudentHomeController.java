@@ -66,6 +66,4 @@ public class StudentHomeController implements Initializable {
     private void viewRequestPage() {
         MainApp.router.navigateTo("studentRequestStatus");
     }
-
-
 }

@@ -4,28 +4,26 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import org.IDentifyMe.MainApp;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.control.Alert;
 
-public class renewalRequestController implements Initializable {
+public class replacementRequestController implements Initializable {
     @FXML
     Pane headerBar;
 
     @FXML
-    CheckBox damagedID;
+    ImageView aastuImage;
 
     @FXML
-    CheckBox incorrectID;
-
-    @FXML
-    ImageView idImage;
+    ImageView policeImage;
 
     @FXML
     TabPane tabPane;
@@ -48,40 +46,26 @@ public class renewalRequestController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         MainApp.router.setBackground("loginBg.png", headerBar);
-        System.out.println("renewal Request Page");
+        System.out.println("replacement Request Page");
     }
 
     @FXML
-    private void checkcreditCard () {
+    private void checkcreditCard() {
         if (creditCard.isSelected()) {
             bankTransfer.setSelected(false);
         }
     }
 
     @FXML
-    private void checkbankTransfer () {
+    private void checkbankTransfer() {
         if (bankTransfer.isSelected()) {
             creditCard.setSelected(false);
         }
     }
 
     @FXML
-    public void checkDamagedID() {
-        if (damagedID.isSelected()) {
-            incorrectID.setSelected(false);
-        }
-    }
-
-    @FXML
-    public void checkIncorrectID() {
-        if (incorrectID.isSelected()) {
-            damagedID.setSelected(false);
-        }
-    }
-
-    @FXML
     private void reloadPage() {
-        if (damagedID.isSelected() || incorrectID.isSelected() || idImage.getImage() != null) {
+        if (aastuImage.getImage() != null || policeImage.getImage() != null) {
             if (MainApp.router.CreateCONFIRMATION("Confirmation", "Are you sure you want to go reload?",
                     "All the data will be lost")) {
                 MainApp.router.reloadPage();
@@ -93,7 +77,7 @@ public class renewalRequestController implements Initializable {
 
     @FXML
     private void homePage() {
-        if (damagedID.isSelected() || incorrectID.isSelected() || idImage.getImage() != null) {
+        if (aastuImage.getImage() != null || policeImage.getImage() != null) {
             if (MainApp.router.CreateCONFIRMATION("Confirmation", "Are you sure you want to go back?",
                     "All the data will be lost")) {
                 MainApp.router.navigateTo("studentHome");
@@ -108,7 +92,7 @@ public class renewalRequestController implements Initializable {
         if (tabPane.getSelectionModel().getSelectedIndex() > 0) {
             tabPane.getSelectionModel().selectPrevious();
         } else {
-            if (damagedID.isSelected() || incorrectID.isSelected() || idImage.getImage() != null) {
+            if (aastuImage.getImage() != null || policeImage.getImage() != null) {
                 if (MainApp.router.CreateCONFIRMATION("Confirmation", "Are you sure you want to go back?",
                         "All the data will be lost")) {
                     MainApp.router.navigateBack();
@@ -120,10 +104,21 @@ public class renewalRequestController implements Initializable {
     }
 
     @FXML
-    private void chooseImage() {
+    private void chooseAASTUImage() {
         String path = MainApp.router.openFileChooser();
         if (path != null) {
-            idImage.setImage(MainApp.router.getImage(path));
+            aastuImage.setImage(MainApp.router.getImage(path));
+        } else {
+            MainApp.router.CreatePopup("Error", "An error occurred while selecting the image", Alert.AlertType.ERROR,
+                    true, "Please select a valid image");
+        }
+    }
+
+    @FXML
+    private void choosePoliceImage() {
+        String path = MainApp.router.openFileChooser();
+        if (path != null) {
+            policeImage.setImage(MainApp.router.getImage(path));
         } else {
             MainApp.router.CreatePopup("Error", "An error occurred while selecting the image", Alert.AlertType.ERROR,
                     true, "Please select a valid image");
@@ -132,12 +127,11 @@ public class renewalRequestController implements Initializable {
 
     @FXML
     private void nextPage() {
-        if (damagedID.isSelected() || incorrectID.isSelected() && idImage.getImage() != null) {
+        if (aastuImage.getImage() != null && policeImage.getImage() != null) {
             tabPane.getSelectionModel().selectNext();
         } else {
             MainApp.router.CreatePopup("Error", "Please select a valid option and an image", Alert.AlertType.ERROR,
-                    true, "Please select a valid option and an image");
-
+                    true, "Please select a valid image");
         }
     }
 
@@ -153,5 +147,4 @@ public class renewalRequestController implements Initializable {
                     "Please fill all the fields");
         }
     }
-
 }

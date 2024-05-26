@@ -94,9 +94,5 @@ public class DocumentsTable extends  DatabaseManager{
             e.printStackTrace();
         }
         return false;
-    }
-
-
-    
-    
+    }  
 }

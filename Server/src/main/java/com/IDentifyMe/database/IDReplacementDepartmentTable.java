@@ -93,6 +93,5 @@ public class IDReplacementDepartmentTable extends DatabaseManager {
         }
         return false;
     }
-
     
 }

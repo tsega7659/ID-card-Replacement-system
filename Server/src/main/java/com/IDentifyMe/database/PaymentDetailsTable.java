@@ -100,8 +100,5 @@ public class PaymentDetailsTable extends DatabaseManager {
             e.printStackTrace();
         }
         return false;
-    }
-
-
-    
+    }    
 }
