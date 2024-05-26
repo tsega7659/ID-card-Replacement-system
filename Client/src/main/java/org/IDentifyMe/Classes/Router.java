@@ -46,11 +46,12 @@ public class Router implements Function<String, String> {
 
         this.addRoute("financeHome", "FinanceHome.fxml");
         this.addRoute("financeDashboard", "FinanceDashboard.fxml");
-        this.addRoute("financeProfile", "FinanceProfile.fxml");
+        this.addRoute("financeRequests", "financeRequestspage.fxml");
+        this.addRoute("financeProfile", "ProfilePage.fxml");
 
         this.addRoute("ID_DepartmentHome", "ID_DepartmentHome.fxml");
         this.addRoute("ID_DepartmentDashboard", "ID_DepartmentDashboard.fxml");
-        this.addRoute("ID_DepartmentProfile", "ID_DepartmentProfile.fxml");
+        this.addRoute("ID_DepartmentProfile", "ProfilePage.fxml");
         this.addRoute("calendar", "CalendarPage.fxml");
     }
 

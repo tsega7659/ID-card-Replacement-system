@@ -106,7 +106,7 @@
                   </VBox>
                   <VBox alignment="BOTTOM_CENTER" GridPane.columnIndex="1">
                      <children>
-                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="181.0" prefWidth="242.0" text="Request">
+                        <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#financeRequestspage" prefHeight="181.0" prefWidth="242.0" text="Request">
                            <graphic>
                               <Icons525View fill="#2d75e8" glyphName="EDIT" size="50" />
                            </graphic>
@@ -142,7 +142,7 @@
                   </VBox>
                   <VBox alignment="TOP_CENTER" GridPane.rowIndex="1">
                      <children>
-                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="181.0" prefWidth="242.0" text="Profile">
+                        <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#profilePage" prefHeight="181.0" prefWidth="242.0" text="Profile">
                            <graphic>
                               <FontAwesomeIconView fill="#2d75e8" glyphName="USER_CIRCLE_ALT" size="60" />
                            </graphic>

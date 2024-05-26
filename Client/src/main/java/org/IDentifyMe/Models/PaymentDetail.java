@@ -8,11 +8,12 @@ public class PaymentDetail {
     private double amount;
     private String receiptNumber;
     private String paymentDate;
+    private String paymentMethod;
     private String status;
     private String paymentVerificationDate;
     private String bankName;
 
-    public PaymentDetail(int paymentID, int requestID, double amount, String receiptNumber, String paymentDate, String status, String paymentVerificationDate, String bankName) {
+    public PaymentDetail(int paymentID, int requestID, double amount, String receiptNumber, String paymentDate, String status, String paymentVerificationDate, String bankName, String paymentMethod) {
         this.paymentID = paymentID;
         this.requestID = requestID;
         this.amount = amount;
@@ -21,6 +22,8 @@ public class PaymentDetail {
         this.status = status;
         this.paymentVerificationDate = paymentVerificationDate;
         this.bankName = bankName;
+        this.paymentMethod = paymentMethod;
+
     }
     public PaymentDetail() {
         this.paymentID = 0;
@@ -41,7 +44,8 @@ public class PaymentDetail {
             json.getString("paymentDate"),
             json.getString("status"),
             json.getString("paymentVerificationDate"),
-            json.getString("bankName")
+            json.getString("bankName"),
+            json.getString("paymentMethod")
         );
     }
     public JSONObject toJSON() {
@@ -53,6 +57,7 @@ public class PaymentDetail {
         json.put("paymentDate", this.paymentDate);
         json.put("status", this.status);
         json.put("paymentVerificationDate", this.paymentVerificationDate);
+        json.put("paymentMethod", this.paymentMethod);
         json.put("bankName", this.bankName);
         return json;
     }
@@ -115,5 +120,13 @@ public class PaymentDetail {
 
     public void setBankName(String bankName) {
         this.bankName = bankName;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+    
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
 }

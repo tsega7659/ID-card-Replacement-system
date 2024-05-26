@@ -13,4 +13,6 @@ module org.IDentifyMe {
     opens org.IDentifyMe.Controller to javafx.fxml;
     opens org.IDentifyMe to javafx.fxml, javafx.graphics, org.IDentifyMe.Classes;
     opens org.IDentifyMe.Classes to javafx.graphics;
+    opens org.IDentifyMe.Models to javafx.base;
+
 }

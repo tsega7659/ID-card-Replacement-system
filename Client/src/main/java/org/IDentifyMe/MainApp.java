@@ -1,6 +1,9 @@
 package org.IDentifyMe;
 
+import org.IDentifyMe.Classes.HttpClientHandler;
 import org.IDentifyMe.Classes.Router;
+import org.IDentifyMe.Classes.validatorFuctory;
+
 import atlantafx.base.theme.PrimerDark;
 import javafx.application.Application;
 import javafx.scene.image.Image;
@@ -22,6 +25,10 @@ public class MainApp extends Application {
         stage.setOnCloseRequest(e -> {
             e.consume();
             if (router.CreateCONFIRMATION("Exit", "Are you sure you want to exit?", null)) {
+                if (MainApp.User != null) {
+                    HttpClientHandler client = new HttpClientHandler();
+                    client.sendGetRequest("/" + MainApp.User + "/logout", validatorFuctory.createValidator(null));
+                }
                 System.exit(0);
             }
         });
@@ -30,7 +37,6 @@ public class MainApp extends Application {
         stage.setTitle(APP_NAME);
         stage.show();
     }
-
 
     public static void main(String[] args) {
         launch();

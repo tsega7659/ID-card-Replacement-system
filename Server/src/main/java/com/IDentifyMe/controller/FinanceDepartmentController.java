@@ -62,8 +62,7 @@ public class FinanceDepartmentController {
         }
         exchange.getRequestReceiver().receiveFullString((exc, message) -> {
             try {
-                String jsonString = new String(message);
-                FinanceDepartment fid = new FinanceDepartment(new JSONObject(jsonString));
+                FinanceDepartment fid = new FinanceDepartment(new JSONObject(message));
 
                 if (fid == null || !fid.validateAttributes()) {
                     throw new IllegalArgumentException("Invalid FinanceDepartment object");
@@ -99,12 +98,12 @@ public class FinanceDepartmentController {
             sendResponse(exchange, 401, "falid", "login");
             return;
         }
-        FinanceDepartment student = getAttribute(getSession(exchange));
-        if (student != null) {
-            exchange.getResponseSender().send(student.toJSON().toString());
+        FinanceDepartment Finance = getAttribute(getSession(exchange));
+        if (Finance != null) {
+            sendResponse(exchange, 200, "successful", Finance.toJSON().toString());
         } else {
             getSession(exchange).invalidate(exchange);
-            sendResponse(exchange, 401, "falid", "No student information in session");
+            sendResponse(exchange, 401, "falid", "No Finance information in session");
         }
     }
 

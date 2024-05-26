@@ -51,4 +51,14 @@ public class financeHomeController implements Initializable {
     private void dashboardPage() {
         MainApp.router.navigateTo(MainApp.User+"Dashboard");
     }
+
+    @FXML
+    private void profilePage() {
+        MainApp.router.navigateTo(MainApp.User+"Profile");
+    }
+
+    @FXML
+    private void financeRequestspage(){
+        MainApp.router.navigateTo("financeRequests");
+    }
 }
