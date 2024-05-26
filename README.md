@@ -46,7 +46,145 @@ The project will involve the design, development, and implementation of an ID Ca
 - Software: JavaFX, Undertow, MySQL
 
 ## Installation
-Provide step-by-step installation instructions.
+
+### Prerequisites
+
+Before you begin, ensure you have the following installed on your machine:
+
+- **Java Development Kit (JDK) 17**: [Download and install JDK 17](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html).
+- **Apache Maven**: [Download and install Maven](https://maven.apache.org/install.html).
+- **Docker**: [Download and install Docker](https://docs.docker.com/get-docker/) (if you plan to use Docker).
+
+### Installation
+
+Follow these steps to set up and run the IDentifyMe application.
+
+#### Step 1: Clone the Repository
+
+First, clone the repository to your local machine:
+
+```sh
+git clone <repository_url>
+cd IDentifyMe
+```
+
+#### Step 2: Build the Project
+
+Use Maven to build the project:
+
+```sh
+./mvnw clean install
+```
+
+This command will compile the code, run tests, and package the application.
+
+#### Step 3: Run the Application
+
+You can run the application using either Maven or Docker.
+
+#### Using Maven
+
+```sh
+./mvnw exec:java -Dexec.mainClass="com.IDentifyMe.App"
+```
+
+#### Using Docker
+
+1. **Build the Docker Image**:
+
+    ```sh
+    docker build -t identifyme .
+    ```
+
+2. **Run the Docker Container**:
+
+    ```sh
+    docker run -p 8080:8080 identifyme
+    ```
+
+#### Step 4: Open in Browser
+
+Once the application is running, open your web browser and go to:
+
+```
+http://localhost:8080
+```
+
+You should see the application's web interface.
+
+
+### Directory Structure
+
+Ensure your project directory has the following structure:
+
+```
+IDentifyMe/
+├── .mvn/
+├── .vscode/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/
+│   │   │       └── IDentifyMe/
+│   │   │           ├── classes/
+│   │   │           │   ├── DatabaseManager.java
+│   │   │           │   └── Router.java
+│   │   │           ├── controller/
+│   │   │           │   ├── DocumentController.java
+│   │   │           │   ├── FinanceDepartmentController.java
+│   │   │           │   ├── IDReplacementDepartmentController.java
+│   │   │           │   ├── PaymentDetailController.java
+│   │   │           │   ├── RequestController.java
+│   │   │           │   └── StudentController.java
+│   │   │           ├── database/
+│   │   │           │   ├── DocumentsTable.java
+│   │   │           │   ├── FinanceDepartmentTable.java
+│   │   │           │   ├── IDReplacementDepartmentTable.java
+│   │   │           │   ├── PaymentDetailsTable.java
+│   │   │           │   ├── RequestsTable.java
+│   │   │           │   └── StudentsTable.java
+│   │   │           ├── models/
+│   │   │           │   ├── Document.java
+│   │   │           │   ├── FinanceDepartment.java
+│   │   │           │   ├── IDReplacementDepartment.java
+│   │   │           │   ├── PaymentDetail.java
+│   │   │           │   ├── Request.java
+│   │   │           │   └── Student.java
+│   │   │           └── App.java
+│   │   └── resources/
+│   │       ├── images/
+│   │       │   ├── gtav.png
+│   │       │   ├── icon.png
+│   │       ├── webroot/
+│   │       │   └── index.html
+│   │       └── icon.png
+│   └── test/
+├── target/
+├── Dockerfile
+├── mvnw
+├── mvnw.cmd
+└── pom.xml
+```
+
+## Troubleshooting
+
+- **Java Version**: Ensure you're using JDK 17. Check your Java version with:
+
+    ```sh
+    java -version
+    ```
+
+- **Maven Issues**: If you encounter issues with Maven, ensure that your `mvnw` script is executable:
+
+    ```sh
+    chmod +x mvnw
+    ```
+
+- **Dependencies**: If you face dependency issues, try updating the local repository:
+
+    ```sh
+    ./mvnw dependency:resolve
+    ```
 
 ## Credits
 Acknowledgements for individuals or projects that contributed to the project.
