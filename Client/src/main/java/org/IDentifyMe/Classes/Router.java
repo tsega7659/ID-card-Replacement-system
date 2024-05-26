@@ -1,5 +1,6 @@
 package org.IDentifyMe.Classes;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +19,7 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class Router implements Function<String, String> {
@@ -39,7 +41,7 @@ public class Router implements Function<String, String> {
         this.addRoute("studentNewRequest", "requestFirstPage.fxml");
         this.addRoute("studentRequestStatus", "requestStatusPage.fxml");
         this.addRoute("studentRenewalRequest", "renewalRequestPage.fxml");
-        this.addRoute("studentreplacementRequest", "replacementRequestPage.fxml");
+        this.addRoute("studentReplacementRequest", "replacementRequestPage.fxml");
 
 
         this.addRoute("financeHome", "FinanceHome.fxml");
@@ -174,4 +176,30 @@ public class Router implements Function<String, String> {
         bg.setBackground(new Background(backgroundImage));
     }
 
+    public Image getImage(String imagePath) {
+        try {
+            File file = new File(imagePath);
+            if (file.exists()) {
+                return new Image(file.toURI().toString());
+            } else {
+                throw new IllegalArgumentException("Image file not found at " + imagePath);
+            }
+        } catch (Exception e) {
+            CreatePopup("Error", "An error occurred while selecting the image", Alert.AlertType.ERROR, true,
+                    e.getMessage());
+            return null;
+        }
+    }
+    public String openFileChooser() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        fileChooser.getExtensionFilters().addAll(
+            new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
+        );
+        File selectedFile = fileChooser.showOpenDialog(stage);
+        if (selectedFile != null) {
+            return selectedFile.getAbsolutePath();
+        }
+        return null;
+    }
 }

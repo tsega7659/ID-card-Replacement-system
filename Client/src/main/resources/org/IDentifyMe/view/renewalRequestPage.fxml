@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="619.0" prefWidth="947.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.IDentifyMe.Controller.StudentHomeController">
+<BorderPane prefHeight="619.0" prefWidth="947.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.IDentifyMe.Controller.renewalRequestController">
    <top>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -87,7 +87,7 @@
       </VBox>
    </top>
    <center>
-      <TabPane prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/tabpane.css" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+      <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/tabpane.css" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
           <Tab text="ID form">
                <content>
@@ -109,12 +109,12 @@
                                     </HBox>
                                     <HBox alignment="CENTER" prefHeight="44.0" prefWidth="470.0" spacing="15.0" VBox.vgrow="ALWAYS">
                                        <children>
-                                          <CheckBox mnemonicParsing="false" text="Damaged ID">
+                                          <CheckBox fx:id="damagedID" mnemonicParsing="false" onAction="#checkDamagedID" text="Damaged ID">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </CheckBox>
-                                          <CheckBox mnemonicParsing="false" text="Incorrect ID">
+                                          <CheckBox fx:id="incorrectID" mnemonicParsing="false" onAction="#checkIncorrectID" text="Incorrect ID">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
@@ -130,7 +130,7 @@
                                                       <Font size="17.0" />
                                                    </font>
                                                 </Label>
-                                                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="204.0" text="Choose" VBox.vgrow="ALWAYS">
+                                                <Button mnemonicParsing="false" onAction="#chooseImage" prefHeight="50.0" prefWidth="204.0" text="Choose" VBox.vgrow="ALWAYS">
                                                    <graphic>
                                                       <FontAwesomeIconView fill="#2d75e8" glyphName="FOLDER_OPEN" size="26" />
                                                    </graphic>
@@ -141,7 +141,7 @@
                                                       <Insets />
                                                    </VBox.margin>
                                                 </Button>
-                                                <Button contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="46.0" prefWidth="205.0" style="-fx-background-color: #2d75e8; -fx-text-fill: black;" text="Next">
+                                                <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#nextPage" prefHeight="46.0" prefWidth="205.0" style="-fx-background-color: #2d75e8; -fx-text-fill: black;" text="Next">
                                                    <graphic>
                                                       <FontAwesomeIconView glyphName="ANGLE_DOUBLE_RIGHT" size="30" />
                                                    </graphic>
@@ -153,7 +153,7 @@
                                           </VBox>
                                        </center>
                                        <left>
-                                          <ImageView fitHeight="229.0" fitWidth="241.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+                                          <ImageView fx:id="idImage" fitHeight="229.0" fitWidth="241.0" pickOnBounds="true" BorderPane.alignment="CENTER">
                                              <image>
                                                 <Image url="@../image/no-image.png" />
                                              </image>
@@ -208,7 +208,7 @@
                                           </HBox>
                                        </left>
                                        <center>
-                                          <TextField prefHeight="34.0" prefWidth="257.0" BorderPane.alignment="CENTER" />
+                                          <TextField fx:id="ReceiptNumberTextFiled" prefHeight="34.0" prefWidth="257.0" BorderPane.alignment="CENTER" />
                                        </center>
                                     </BorderPane>
                                     <HBox alignment="CENTER" prefHeight="44.0" prefWidth="511.0" spacing="15.0" VBox.vgrow="ALWAYS">
@@ -218,12 +218,12 @@
                                                 <Font size="17.0" />
                                              </font>
                                           </Label>
-                                          <CheckBox mnemonicParsing="false" prefHeight="20.0" prefWidth="138.0" text="Credit Card">
+                                          <CheckBox fx:id="creditCard" mnemonicParsing="false" onAction="#checkcreditCard" prefHeight="20.0" prefWidth="138.0" text="Credit Card">
                                              <font>
                                                 <Font size="17.0" />
                                              </font>
                                           </CheckBox>
-                                          <CheckBox mnemonicParsing="false" text="Bank Transfer">
+                                          <CheckBox fx:id="bankTransfer" mnemonicParsing="false" onAction="#checkbankTransfer" text="Bank Transfer">
                                              <font>
                                                 <Font size="17.0" />
                                              </font>
@@ -243,7 +243,7 @@
                                           </HBox>
                                        </left>
                                        <center>
-                                          <DatePicker prefHeight="34.0" prefWidth="359.0" BorderPane.alignment="CENTER" />
+                                          <DatePicker fx:id="paymentDate" prefHeight="34.0" prefWidth="359.0" BorderPane.alignment="CENTER" />
                                        </center>
                                     </BorderPane>
                                     <BorderPane layoutX="31.0" layoutY="159.0" prefHeight="50.0" prefWidth="482.0" VBox.vgrow="ALWAYS">
@@ -259,12 +259,12 @@
                                           </HBox>
                                        </left>
                                        <center>
-                                          <TextField prefHeight="34.0" prefWidth="270.0" BorderPane.alignment="CENTER" />
+                                          <TextField fx:id="bankName" prefHeight="34.0" prefWidth="270.0" BorderPane.alignment="CENTER" />
                                        </center>
                                     </BorderPane>
                                     <HBox alignment="CENTER" prefHeight="34.0" prefWidth="482.0" VBox.vgrow="ALWAYS">
                                        <children>
-                                          <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="205.0" style="-fx-background-color: #2d75e8; -fx-text-fill: black;" text="Submitte">
+                                          <Button mnemonicParsing="false" onAction="#submitRequest" prefHeight="46.0" prefWidth="205.0" style="-fx-background-color: #2d75e8; -fx-text-fill: black;" text="Submitte">
                                              <graphic>
                                                 <FontAwesomeIconView glyphName="CHECK_SQUARE_ALT" size="30" />
                                              </graphic>

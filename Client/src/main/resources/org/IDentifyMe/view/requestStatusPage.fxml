@@ -119,7 +119,7 @@
                               </HBox>
                            </left>
                            <center>
-                              <Label alignment="CENTER" prefHeight="19.0" prefWidth="318.0" text="Label" BorderPane.alignment="CENTER">
+                              <Label alignment="CENTER" prefHeight="19.0" prefWidth="318.0" BorderPane.alignment="CENTER">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -139,7 +139,7 @@
                               </HBox>
                            </left>
                            <center>
-                              <Label alignment="CENTER" prefHeight="18.0" prefWidth="371.0" text="Label" BorderPane.alignment="CENTER">
+                              <Label alignment="CENTER" prefHeight="18.0" prefWidth="371.0" BorderPane.alignment="CENTER">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -159,7 +159,7 @@
                               </HBox>
                            </left>
                            <center>
-                              <Label alignment="CENTER" prefHeight="18.0" prefWidth="371.0" text="Label" BorderPane.alignment="CENTER">
+                              <Label alignment="CENTER" prefHeight="18.0" prefWidth="371.0" BorderPane.alignment="CENTER">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -179,7 +179,7 @@
                               </HBox>
                            </left>
                            <center>
-                              <Label alignment="CENTER" prefHeight="18.0" prefWidth="371.0" text="Label" BorderPane.alignment="CENTER">
+                              <Label alignment="CENTER" prefHeight="18.0" prefWidth="371.0" BorderPane.alignment="CENTER">
                                  <font>
                                     <Font size="15.0" />
                                  </font>

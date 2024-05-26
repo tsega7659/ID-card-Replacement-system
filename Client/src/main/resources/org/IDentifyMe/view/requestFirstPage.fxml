@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="619.0" prefWidth="947.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.IDentifyMe.Controller.StudentHomeController">
+<BorderPane prefHeight="619.0" prefWidth="947.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.IDentifyMe.Controller.requestFirstPage">
    <top>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -86,7 +86,7 @@
                <children>
                   <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="115.0" prefWidth="432.0" style="-fx-border-color: #2d75e8; -fx-border-width: 2px; -fx-border-radius: 13px;">
                      <left>
-                        <HBox alignment="CENTER" prefHeight="199.0" prefWidth="103.0" BorderPane.alignment="CENTER">
+                        <HBox alignment="CENTER" onMouseClicked="#renewalPage" prefHeight="199.0" prefWidth="103.0" BorderPane.alignment="CENTER">
                            <children>
                               <FontAwesomeIconView fill="#2d75e8" glyphName="ANGLE_RIGHT" size="50" />
                            </children>
@@ -95,18 +95,18 @@
                      <center>
                         <HBox prefHeight="199.0" prefWidth="280.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Label prefHeight="133.0" prefWidth="354.0" text="ID Card Renewal">
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#renewalPage" prefHeight="125.0" prefWidth="451.0" text="ID Card Renewal">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
-                              </Label>
+                              </Button>
                            </children>
                         </HBox>
                      </center>
                   </BorderPane>
                   <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="115.0" prefWidth="432.0" style="-fx-border-color: #2d75e8; -fx-border-width: 2px; -fx-border-radius: 13px;">
                      <left>
-                        <HBox alignment="CENTER" prefHeight="199.0" prefWidth="103.0" BorderPane.alignment="CENTER">
+                        <HBox alignment="CENTER" onMouseClicked="#replacementPage" prefHeight="199.0" prefWidth="103.0" BorderPane.alignment="CENTER">
                            <children>
                               <FontAwesomeIconView fill="#2d75e8" glyphName="ANGLE_RIGHT" size="50" />
                            </children>
@@ -115,11 +115,11 @@
                      <center>
                         <HBox prefHeight="199.0" prefWidth="280.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Label prefHeight="133.0" prefWidth="354.0" text="ID card replacement">
+                              <Button mnemonicParsing="false" onAction="#replacementPage" prefHeight="149.0" prefWidth="435.0" text="ID card replacement">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
-                              </Label>
+                              </Button>
                            </children>
                         </HBox>
                      </center>

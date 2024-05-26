@@ -36,7 +36,7 @@
                <children>
                   <ScrollPane id="bodyLogin" fx:id="bodyLogin" fitToHeight="true" fitToWidth="true">
                      <content>
-                        <VBox fx:id="loginContent" alignment="CENTER" prefHeight="540.0" prefWidth="548.0">
+                        <VBox fx:id="loginContent" alignment="CENTER" prefHeight="540.0" prefWidth="548.0" styleClass="bg-default">
                            <children>
                               <GridPane fx:id="login_content" alignment="CENTER" maxHeight="471.0" maxWidth="453.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="413.0" prefWidth="453.0" style="-fx-border-color: ffffff; -fx-border-radius: 10px; -fx-border-width: 2px;">
                                  <columnConstraints>
@@ -57,7 +57,7 @@
                                           <ChoiceBox fx:id="userChoise" prefWidth="140.0" />
                                        </children>
                                     </HBox>
-                                    <Label fx:id="welcome" alignment="CENTER" prefHeight="100.0" prefWidth="383.0" style="-fx-text-fill: -color-dark;" text="Welcome" textAlignment="CENTER" textFill="#000000f7" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER">
+                                    <Label fx:id="welcome" alignment="CENTER" prefHeight="100.0" prefWidth="383.0" text="Welcome" textAlignment="CENTER" textFill="#f8f8f8f7" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER">
                                        <font>
                                           <Font name="Noto Sans Tamil UI Bold" size="40.0" />
                                        </font>
