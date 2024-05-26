@@ -9,7 +9,6 @@ The ID Card Replacement System aims to simplify the process of replacing lost or
 ## Table of Contents
 - [Introduction](#introduction)
 - [Objectives](#objectives)
-- [Scope](#scope)
 - [Features](#features)
 - [Project Structure](#project-structure)
 - [Resources Required](#resources-required)
@@ -24,9 +23,6 @@ The current process of replacing lost or damaged ID cards at AASTU is often cumb
 - Streamline administrative procedures associated with issuing replacement ID cards.
 - Enhance efficiency and transparency in the ID card replacement process.
 - Improve the overall student experience by providing a user-friendly interface for requesting ID card replacements.
-
-## Scope
-The project will involve the design, development, and implementation of an ID Card Replacement (Appointment) System specifically tailored for AASTU students. The system will include user interfaces for students, the finance department, and the ID replacement department. It will facilitate document submission, request approval, appointment scheduling, and database management. The scope does not include physical production of ID cards or integration with external systems beyond the university's infrastructure.
 
 ## Features
 - Simplified Request Process: Students can easily request ID card renewal or replacement through a user-friendly interface.
