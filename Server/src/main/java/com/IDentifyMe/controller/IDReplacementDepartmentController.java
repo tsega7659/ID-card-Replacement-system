@@ -19,8 +19,7 @@ public class IDReplacementDepartmentController {
 
         exchange.getRequestReceiver().receiveFullString(((exc, message) -> {
             try {
-                String jsonString = new String(message);
-                IDReplacementDepartment fid = new IDReplacementDepartment(new JSONObject(jsonString));
+                IDReplacementDepartment fid = new IDReplacementDepartment(new JSONObject(message));
 
                 if (fid == null || fid.getPassword() == null) {
                     throw new IllegalArgumentException("IDReplacementDepartment object, student ID, or password is null");
@@ -62,8 +61,7 @@ public class IDReplacementDepartmentController {
         }
         exchange.getRequestReceiver().receiveFullString((exc, message) -> {
             try {
-                String jsonString = new String(message);
-                IDReplacementDepartment fid = new IDReplacementDepartment(new JSONObject(jsonString));
+                IDReplacementDepartment fid = new IDReplacementDepartment(new JSONObject(message));
 
                 if (fid == null || !fid.validateAttributes()) {
                     throw new IllegalArgumentException("Invalid IDReplacementDepartment object");
@@ -101,7 +99,7 @@ public class IDReplacementDepartmentController {
         }
         IDReplacementDepartment student = getAttribute(getSession(exchange));
         if (student != null) {
-            exchange.getResponseSender().send(student.toJSON().toString());
+            sendResponse(exchange, 200, "successful", student.toJSON().toString());
         } else {
             getSession(exchange).invalidate(exchange);
             sendResponse(exchange, 401, "falid", "No student information in session");

@@ -52,6 +52,7 @@ public class Router implements Function<String, String> {
         this.addRoute("ID_DepartmentHome", "ID_DepartmentHome.fxml");
         this.addRoute("ID_DepartmentDashboard", "ID_DepartmentDashboard.fxml");
         this.addRoute("ID_DepartmentProfile", "ProfilePage.fxml");
+        this.addRoute("ID_DepartmentRequests", "idRequestspage.fxml");
         this.addRoute("calendar", "CalendarPage.fxml");
     }
 

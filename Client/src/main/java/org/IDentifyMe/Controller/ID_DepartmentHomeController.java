@@ -16,7 +16,7 @@ public class ID_DepartmentHomeController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         MainApp.router.setBackground("loginBg.png", headerBar);
-        System.out.println("Student Home Page");
+        System.out.println("ID_Department Home Page");
     }
 
     @FXML
@@ -55,5 +55,16 @@ public class ID_DepartmentHomeController implements Initializable {
     @FXML
     private void CalendarPage() {
         MainApp.router.navigateTo("calendar");
+    }
+
+    @FXML
+    private void profilePage() {
+        MainApp.router.navigateTo("ID_DepartmentProfile");
+    }
+
+
+    @FXML
+    private void IdRequestspage(){
+        MainApp.router.navigateTo("ID_DepartmentRequests");
     }
 }

@@ -14,7 +14,7 @@ public class requestStatusController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         MainApp.router.setBackground("loginBg.png", headerBar);
-        System.out.println("Request First Page");
+        System.out.println("Request Status Page");
     }
 
     @FXML
