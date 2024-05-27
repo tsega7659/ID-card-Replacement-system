@@ -1,187 +1,124 @@
 # AASTU ID Card Replacement (Appointment) System
 
-## Description
-The ID Card Replacement System aims to simplify the process of replacing lost or damaged ID cards for students at the Addis Ababa Science and Technology University (AASTU). This system streamlines administrative procedures, enhances efficiency, and improves the overall student experience.
-
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-## ![alt text](https://github.com/DeepBlue-dot/ID-card-Replacement-system/blob/main/Client/src/main/resources/org/IDentifyMe/icons/icon.png?raw=true)
+# ![icon](https://github.com/DeepBlue-dot/ID-card-Replacement-system/blob/main/Client/src/main/resources/org/IDentifyMe/icons/iconSmall.png?raw=true)
 
-## Table of Contents
-- [Introduction](#introduction)
-- [Objectives](#objectives)
-- [Features](#features)
-- [Project Structure](#project-structure)
-- [Resources Required](#resources-required)
-- [Installation](#installation)
-- [Credits](#credits)
+### Table of Contents
 
-## Introduction
-The current process of replacing lost or damaged ID cards at AASTU is often cumbersome and time-consuming for both students and administrative staff. Students face challenges such as long waiting times, complex documentation requirements, and lack of transparency in the process. As a result, there is a need to modernize and streamline the ID card replacement process to better serve the student community. The proposed ID Card Replacement (Appointment) System aims to address these challenges by providing a user-friendly, efficient, and transparent solution.
+1. [Introduction](#introduction)
+2. [Objective](#objective)
+3. [Technology Stack](#technology-stack)
+4. [Repository Structure](#repository-structure)
+5. [Installation](#installation)
+6. [Usage](#usage)
+7. [Directory Structure](#directory-structure)
+8. [Database Dump](#database-dump)
 
-## Objectives
-- Simplify the process of replacing lost or damaged ID cards for AASTU students.
-- Streamline administrative procedures associated with issuing replacement ID cards.
-- Enhance efficiency and transparency in the ID card replacement process.
-- Improve the overall student experience by providing a user-friendly interface for requesting ID card replacements.
+---
 
-## Features
-- Simplified Request Process: Students can easily request ID card renewal or replacement through a user-friendly interface.
-- Document Upload: Depending on the request type, students can upload necessary documents directly through the system.
-- Financial Approval: The finance department can review and approve requests based on provided banking information.
-- ID Replacement Management: The ID replacement department can manage approved requests and schedule appointments for students to collect their new ID cards.
+### Introduction
 
-## Project Structure
-- JavaFX for User Interface: Building rich client applications.
-- Undertow for Server: High-performance web server with support for both blocking and non-blocking I/O.
-- MySQL for Database: Popular open-source RDBMS known for reliability and scalability.
-- Additional Libraries: Meavn, org.JSON, HTTPCLIENT
+The ID Card Replacement (Appointment) System for AASTU Students aims to streamline the process of replacing lost or damaged ID cards at AASTU. The current process is often cumbersome and time-consuming for both students and administrative staff. This system aims to modernize and simplify the process, improving the overall student experience and administrative efficiency.
 
-## Resources Required
-- Development team: Java developers, UI/UX designers, database administrators
-- Hardware: Servers for hosting the application
-- Software: JavaFX, Undertow, MySQL
+### Objective
 
-## Installation
+The goal of this initiative is to make it easier for AASTU students to replace ID cards that have been misplaced or destroyed. By implementing this system, we aim to improve the overall student experience, increase transparency, and expedite administrative operations.
 
-### Prerequisites
+### Technology Stack
 
-Before you begin, ensure you have the following installed on your machine:
+- **Client-side**: JavaFX for the user interface.
+- **Server-side**: Undertow for the server and MySQL database for data storage.
+- **Other Technologies**: JSON for data interchange.
 
-- **Java Development Kit (JDK) 17**: [Download and install JDK 17](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html).
-- **Apache Maven**: [Download and install Maven](https://maven.apache.org/install.html).
-- **Docker**: [Download and install Docker](https://docs.docker.com/get-docker/) (if you plan to use Docker).
+### Repository Structure
+
+- **Client**: Contains the client-side code, including JavaFX controllers and views.
+- **Server**: Contains the server-side code, including database management and API endpoints.
+
+---
 
 ### Installation
 
-Follow these steps to set up and run the IDentifyMe application.
+To install and run this project, follow these steps:
 
-#### Step 1: Clone the Repository
+1. **Clone the Repository**: 
+   ```
+   git clone <repository-url>
+   ```
+2. **Setup Database**:
+   - Install MySQL and create a new database.
+   - Import the database dump file located in `Server/src/main/java/com/IDentifyMe/database/dump` to populate the database schema and initial data.
+     ```
+     mysql -u username -p database_name < dump_file.sql
+     ```
+3. **Configure Server**:
+   - Open the server project in your IDE.
+   - Update the database connection settings in `DatabaseManager.java` to match your MySQL database configuration.
+4. **Build Server**:
+   - Navigate to the server directory.
+     ```
+     cd Server
+     ```
+   - Build the server application using Maven.
+     ```
+     mvn clean install
+     ```
+5. **Run Server**:
+   - Execute the server JAR file.
+     ```
+     java -jar target/IDentifyMe-1.0-SNAPSHOT.jar
+     ```
+6. **Configure Client**:
+   - Open the client project in your IDE.
+   - Update the server URL in `HttpClientHandler.java` to match the server's endpoint.
+7. **Build Client**:
+   - Navigate to the client directory.
+     ```
+     cd Client
+     ```
+   - Build the client application using Maven.
+     ```
+     mvn clean install
+     ```
+8. **Run Client**:
+   - Execute the client JAR file.
+     ```
+     java -jar target/IDentifyMe-1.0-SNAPSHOT.jar
+     ```
 
-First, clone the repository to your local machine:
+### Troubleshooting
 
-```sh
-git clone <repository_url>
-cd IDentifyMe
-```
+If you encounter any issues during installation or setup, try the following troubleshooting steps:
 
-#### Step 2: Build the Project
+- **Check Dependencies**: Ensure that all required dependencies are installed and configured correctly.
+- **Verify Database Connection**: Double-check the database connection settings in `DatabaseManager.java` and ensure they match your MySQL database configuration.
+- **Build Errors**: If you encounter build errors, make sure that Maven is installed and configured properly. Check for any missing dependencies or syntax errors in the code.
+- **Server Not Starting**: If the server fails to start, check the console output for any error messages. Verify that the database connection is established and that the server is listening on the correct port.
 
-Use Maven to build the project:
+If you're unable to resolve the issue, feel free to reach out for assistance.
 
-```sh
-./mvnw clean install
-```
 
-This command will compile the code, run tests, and package the application.
 
-#### Step 3: Run the Application
+### Usage
 
-You can run the application using either Maven or Docker.
+To use the ID Card Replacement (Appointment) System, follow these steps:
 
-#### Using Maven
-
-```sh
-./mvnw exec:java -Dexec.mainClass="com.IDentifyMe.App"
-```
-
-#### Using Docker
-
-1. **Build the Docker Image**:
-
-    ```sh
-    docker build -t identifyme .
-    ```
-
-2. **Run the Docker Container**:
-
-    ```sh
-    docker run -p 8080:8080 identifyme
-    ```
-
-#### Step 4: Open in Browser
-
-Once the application is running, open your web browser and go to:
-
-```
-http://localhost:8080
-```
-
-You should see the application's web interface.
-
+1. **Login**: Enter your credentials to access the system.
+2. **Request Replacement**: Submit a request for a replacement ID card.
+3. **View Status**: Check the status of your replacement request.
+4. **Admin Dashboard**: Administrators can manage requests and view student information.
 
 ### Directory Structure
 
-Ensure your project directory has the following structure:
+- **Client**: Contains the client-side code.
+  - `src/main/java/org/IDentifyMe`: JavaFX controllers and classes.
+  - `src/main/resources/org/IDentifyMe`: FXML files for UI layout and CSS files for styling.
+- **Server**: Contains the server-side code.
+  - `src/main/java/com/IDentifyMe`: Server-side Java classes.
+  - `src/main/resources`: Server configuration files and resources.
 
-```
-IDentifyMe/
-├── .mvn/
-├── .vscode/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── com/
-│   │   │       └── IDentifyMe/
-│   │   │           ├── classes/
-│   │   │           │   ├── DatabaseManager.java
-│   │   │           │   └── Router.java
-│   │   │           ├── controller/
-│   │   │           │   ├── DocumentController.java
-│   │   │           │   ├── FinanceDepartmentController.java
-│   │   │           │   ├── IDReplacementDepartmentController.java
-│   │   │           │   ├── PaymentDetailController.java
-│   │   │           │   ├── RequestController.java
-│   │   │           │   └── StudentController.java
-│   │   │           ├── database/
-│   │   │           │   ├── DocumentsTable.java
-│   │   │           │   ├── FinanceDepartmentTable.java
-│   │   │           │   ├── IDReplacementDepartmentTable.java
-│   │   │           │   ├── PaymentDetailsTable.java
-│   │   │           │   ├── RequestsTable.java
-│   │   │           │   └── StudentsTable.java
-│   │   │           ├── models/
-│   │   │           │   ├── Document.java
-│   │   │           │   ├── FinanceDepartment.java
-│   │   │           │   ├── IDReplacementDepartment.java
-│   │   │           │   ├── PaymentDetail.java
-│   │   │           │   ├── Request.java
-│   │   │           │   └── Student.java
-│   │   │           └── App.java
-│   │   └── resources/
-│   │       ├── images/
-│   │       │   ├── gtav.png
-│   │       │   ├── icon.png
-│   │       ├── webroot/
-│   │       │   └── index.html
-│   │       └── icon.png
-│   └── test/
-├── target/
-├── Dockerfile
-├── mvnw
-├── mvnw.cmd
-└── pom.xml
-```
+### Database Dump
 
-## Troubleshooting
-
-- **Java Version**: Ensure you're using JDK 17. Check your Java version with:
-
-    ```sh
-    java -version
-    ```
-
-- **Maven Issues**: If you encounter issues with Maven, ensure that your `mvnw` script is executable:
-
-    ```sh
-    chmod +x mvnw
-    ```
-
-- **Dependencies**: If you face dependency issues, try updating the local repository:
-
-    ```sh
-    ./mvnw dependency:resolve
-    ```
-
-## Credits
-Acknowledgements for individuals or projects that contributed to the project.
+- **Database Dump**: Contains SQL dump files for the database schema and initial data.
+   - `database/dump`: SQL dump files for database setup.
 
