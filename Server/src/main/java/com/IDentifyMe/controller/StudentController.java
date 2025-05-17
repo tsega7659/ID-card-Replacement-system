@@ -21,6 +21,7 @@ public class StudentController {
         exchange.getRequestReceiver().receiveFullString(((exc, message) -> {
             try {
                 Student stud = new Student(new JSONObject(message));
+                System.out.println(stud.toJSON().toString());
 
                 if (stud == null || stud.getStudentID() == null || stud.getPassword() == null) {
                     throw new IllegalArgumentException("Student object, student ID, or password is null");

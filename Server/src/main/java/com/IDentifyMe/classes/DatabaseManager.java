@@ -5,10 +5,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public abstract class DatabaseManager {
-    private static final String DATABASE_NAME = "IDentifyMe";
+    private static final String DATABASE_NAME = "id_card_replacement_system";
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/" + DATABASE_NAME;
     private static final String JDBC_USERNAME = "root";
-    private static final String JDBC_PASSWORD = "root";
+    private static final String JDBC_PASSWORD = "tsega7659";
     private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
 
     protected Connection connection;
